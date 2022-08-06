@@ -1,0 +1,4 @@
+﻿Csaken;asd987654321;Felhasználó
+KissP;Asd1234567;Vezető
+Csoborse;Csak12345;Vezető
+NagyB;Hallo11111;Felhasználó
