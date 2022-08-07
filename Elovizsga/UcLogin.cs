@@ -38,8 +38,9 @@ namespace Elovizsga
                 iras.WriteLine(FelhnTB.Text + ";" + JelszoTB.Text + ";"+ a.Felhasznalok[index].Jogosultsag + ";" + DateTime.Now.ToLongDateString() +" "+  DateTime.Now.ToLongTimeString()); 
                 iras.Close();
                 
-                ControlPanel cp1 = new ControlPanel();
-                cp1.Show();
+                UcMain main = new UcMain();
+                main.Show();
+                main.BringToFront();
             }
             else
             {

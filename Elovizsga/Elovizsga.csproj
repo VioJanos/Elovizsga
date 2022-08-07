@@ -52,12 +52,6 @@
     <Compile Include="ControlPanel.Designer.cs">
       <DependentUpon>ControlPanel.cs</DependentUpon>
     </Compile>
-    <Compile Include="Login.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Login.Designer.cs">
-      <DependentUpon>Login.cs</DependentUpon>
-    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UcLogin.cs">
@@ -65,6 +59,12 @@
     </Compile>
     <Compile Include="UcLogin.Designer.cs">
       <DependentUpon>UcLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UcMain.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UcMain.Designer.cs">
+      <DependentUpon>UcMain.cs</DependentUpon>
     </Compile>
     <Compile Include="UcReg.cs">
       <SubType>UserControl</SubType>
@@ -75,9 +75,6 @@
     <Compile Include="Users.cs" />
     <EmbeddedResource Include="ControlPanel.resx">
       <DependentUpon>ControlPanel.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Login.resx">
-      <DependentUpon>Login.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -90,6 +87,9 @@
     </Compile>
     <EmbeddedResource Include="UcLogin.resx">
       <DependentUpon>UcLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UcMain.resx">
+      <DependentUpon>UcMain.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UcReg.resx">
       <DependentUpon>UcReg.cs</DependentUpon>

@@ -46,5 +46,20 @@ namespace Elovizsga
             }
             olvas.Close();
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ucReg1_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ucLogin1_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
