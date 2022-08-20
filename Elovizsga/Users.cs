@@ -8,7 +8,8 @@ namespace Elovizsga
 {
     internal class Users
     {
-        public string FelhN { get;  private set; }
+        public string VezetekNev{ get;  private set; }
+        public string KeresztNev { get; private set; }
         public string Jelszo { get; private set; }
         public string Jogosultsag { get; private set; }
 
@@ -17,28 +18,43 @@ namespace Elovizsga
 
         }
         
-        public Users(string felh, string jelszo, string jogosultsag)
+        public Users(string vezeteknev, string keresztnev, string jelszo, string jogosultsag)
         {
-            FelhN = felh;
+            VezetekNev = vezeteknev;
+            KeresztNev = keresztnev;
             Jelszo = jelszo;
             Jogosultsag = jogosultsag;
         }
 
-        public void setFelhn(string felhn)
+        public void setVezet(string vezeteknev)
         {
-            if(felhn.Any(char.IsUpper))
+            if(vezeteknev.Any(char.IsUpper))
             {
-                FelhN = felhn;
+                VezetekNev = vezeteknev;      
             }
             else
             {
-                char[] ch = felhn.ToCharArray();
+                char[] ch = vezeteknev.ToCharArray();
                 ch[0] = char.ToUpper(ch[0]);
-                felhn = new string(ch);
-                FelhN = felhn;
+                vezeteknev = new string(ch);
+                VezetekNev = vezeteknev;
             }
             
            
+        }
+        public void setKereszt(string keresztnev)
+        {
+            if(keresztnev.Any(char.IsUpper))
+            {
+                KeresztNev = keresztnev ;
+            }
+            else
+            {
+                char[] ch1 = keresztnev.ToCharArray();
+                ch1[0] = char.ToUpper(ch1[0]);
+                keresztnev = new string(ch1);
+                KeresztNev = keresztnev;
+            }
         }
 
         public void setJelszo(string jelszo)

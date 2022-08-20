@@ -30,6 +30,10 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ControlPanel));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.kijelentkezBT = new System.Windows.Forms.Button();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.userProfilBT = new System.Windows.Forms.Button();
             this.raktarBT = new System.Windows.Forms.Button();
             this.beerkezBT = new System.Windows.Forms.Button();
             this.adminBT = new System.Windows.Forms.Button();
@@ -41,16 +45,12 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.userProfilBT = new System.Windows.Forms.Button();
-            this.kijelentkezBT = new System.Windows.Forms.Button();
             this.ucLogin1 = new Elovizsga.UcLogin();
             this.ucReg1 = new Elovizsga.UcReg();
             this.panel1.SuspendLayout();
-            this.flowLayoutPanel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.flowLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -65,8 +65,59 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(200, 708);
+            this.panel1.Size = new System.Drawing.Size(200, 920);
             this.panel1.TabIndex = 0;
+            // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.Color.MediumTurquoise;
+            this.panel2.Controls.Add(this.kijelentkezBT);
+            this.panel2.Controls.Add(this.pictureBox1);
+            this.panel2.Controls.Add(this.userProfilBT);
+            this.panel2.Location = new System.Drawing.Point(0, 0);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(200, 286);
+            this.panel2.TabIndex = 1;
+            // 
+            // kijelentkezBT
+            // 
+            this.kijelentkezBT.BackColor = System.Drawing.Color.MediumTurquoise;
+            this.kijelentkezBT.FlatAppearance.BorderSize = 0;
+            this.kijelentkezBT.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Bisque;
+            this.kijelentkezBT.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.kijelentkezBT.Font = new System.Drawing.Font("Akashi_hun", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.kijelentkezBT.ForeColor = System.Drawing.SystemColors.Highlight;
+            this.kijelentkezBT.Location = new System.Drawing.Point(3, 246);
+            this.kijelentkezBT.Name = "kijelentkezBT";
+            this.kijelentkezBT.Size = new System.Drawing.Size(194, 37);
+            this.kijelentkezBT.TabIndex = 4;
+            this.kijelentkezBT.Text = "Kijelentkezés";
+            this.kijelentkezBT.UseVisualStyleBackColor = false;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(12, 12);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(169, 149);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 0;
+            this.pictureBox1.TabStop = false;
+            // 
+            // userProfilBT
+            // 
+            this.userProfilBT.BackColor = System.Drawing.Color.MediumTurquoise;
+            this.userProfilBT.FlatAppearance.BorderSize = 0;
+            this.userProfilBT.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Bisque;
+            this.userProfilBT.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.userProfilBT.Font = new System.Drawing.Font("Akashi_hun", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.userProfilBT.ForeColor = System.Drawing.SystemColors.Highlight;
+            this.userProfilBT.Location = new System.Drawing.Point(3, 192);
+            this.userProfilBT.Name = "userProfilBT";
+            this.userProfilBT.Size = new System.Drawing.Size(194, 35);
+            this.userProfilBT.TabIndex = 4;
+            this.userProfilBT.Text = "Felhasználói fiók";
+            this.userProfilBT.UseVisualStyleBackColor = false;
             // 
             // raktarBT
             // 
@@ -143,7 +194,7 @@
             this.flowLayoutPanel1.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(200, 0);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(1107, 100);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(1426, 100);
             this.flowLayoutPanel1.TabIndex = 0;
             this.flowLayoutPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.flowLayoutPanel1_Paint);
             // 
@@ -219,57 +270,6 @@
             this.label6.TabIndex = 9;
             this.label6.Text = "label6";
             // 
-            // panel2
-            // 
-            this.panel2.BackColor = System.Drawing.Color.MediumTurquoise;
-            this.panel2.Controls.Add(this.kijelentkezBT);
-            this.panel2.Controls.Add(this.pictureBox1);
-            this.panel2.Controls.Add(this.userProfilBT);
-            this.panel2.Location = new System.Drawing.Point(0, 0);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(200, 286);
-            this.panel2.TabIndex = 1;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(12, 12);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(169, 149);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
-            // 
-            // userProfilBT
-            // 
-            this.userProfilBT.BackColor = System.Drawing.Color.MediumTurquoise;
-            this.userProfilBT.FlatAppearance.BorderSize = 0;
-            this.userProfilBT.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Bisque;
-            this.userProfilBT.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.userProfilBT.Font = new System.Drawing.Font("Akashi_hun", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.userProfilBT.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.userProfilBT.Location = new System.Drawing.Point(3, 192);
-            this.userProfilBT.Name = "userProfilBT";
-            this.userProfilBT.Size = new System.Drawing.Size(194, 35);
-            this.userProfilBT.TabIndex = 4;
-            this.userProfilBT.Text = "Felhasználói fiók";
-            this.userProfilBT.UseVisualStyleBackColor = false;
-            // 
-            // kijelentkezBT
-            // 
-            this.kijelentkezBT.BackColor = System.Drawing.Color.MediumTurquoise;
-            this.kijelentkezBT.FlatAppearance.BorderSize = 0;
-            this.kijelentkezBT.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Bisque;
-            this.kijelentkezBT.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.kijelentkezBT.Font = new System.Drawing.Font("Akashi_hun", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.kijelentkezBT.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.kijelentkezBT.Location = new System.Drawing.Point(3, 246);
-            this.kijelentkezBT.Name = "kijelentkezBT";
-            this.kijelentkezBT.Size = new System.Drawing.Size(194, 37);
-            this.kijelentkezBT.TabIndex = 4;
-            this.kijelentkezBT.Text = "Kijelentkezés";
-            this.kijelentkezBT.UseVisualStyleBackColor = false;
-            // 
             // ucLogin1
             // 
             this.ucLogin1.AutoSize = true;
@@ -277,7 +277,7 @@
             this.ucLogin1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ucLogin1.Location = new System.Drawing.Point(200, 100);
             this.ucLogin1.Name = "ucLogin1";
-            this.ucLogin1.Size = new System.Drawing.Size(1107, 608);
+            this.ucLogin1.Size = new System.Drawing.Size(1426, 820);
             this.ucLogin1.TabIndex = 0;
             this.ucLogin1.Load += new System.EventHandler(this.ucLogin1_Load);
             // 
@@ -288,7 +288,7 @@
             this.ucReg1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ucReg1.Location = new System.Drawing.Point(200, 100);
             this.ucReg1.Name = "ucReg1";
-            this.ucReg1.Size = new System.Drawing.Size(1107, 608);
+            this.ucReg1.Size = new System.Drawing.Size(1426, 820);
             this.ucReg1.TabIndex = 1;
             this.ucReg1.Load += new System.EventHandler(this.ucReg1_Load);
             // 
@@ -297,7 +297,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Silver;
-            this.ClientSize = new System.Drawing.Size(1307, 708);
+            this.ClientSize = new System.Drawing.Size(1626, 920);
             this.Controls.Add(this.ucLogin1);
             this.Controls.Add(this.ucReg1);
             this.Controls.Add(this.flowLayoutPanel1);
@@ -307,10 +307,10 @@
             this.Text = "ControlPanel";
             this.Load += new System.EventHandler(this.ControlPanel_Load);
             this.panel1.ResumeLayout(false);
-            this.flowLayoutPanel1.ResumeLayout(false);
-            this.flowLayoutPanel1.PerformLayout();
             this.panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.flowLayoutPanel1.ResumeLayout(false);
+            this.flowLayoutPanel1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 

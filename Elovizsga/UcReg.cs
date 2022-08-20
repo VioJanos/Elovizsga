@@ -8,49 +8,93 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
+using MySql.Data.MySqlClient;
 
 namespace Elovizsga
 {
     public partial class UcReg : UserControl
     {
+        MySqlConnection conn;
+        string connstring;
+        MySqlCommand cmd;
+        MySqlDataReader dr;
+        
         public UcReg()
         {
             InitializeComponent();
+            connstring = "SERVER = mysql.nethely.hu;PORT=3306; DATABASE=vizga;uid=vizga;PASSWORD=Janika208";
+            try
+            {
+                conn = new MySqlConnection();
+                conn.ConnectionString = connstring;
+                conn.Open();
+                //MessageBox.Show("DB hozzáférés checked!");
+
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            conn.Close();
         }
         Users uj = new Users();
-        string felhnev = "";
+        string vezeteknev = "";
+        string keresztnev = "";
         string jelszo = "";
-        string jog = "";
+        int jog;
         private void RegBT_Click(object sender, EventArgs e)
         {
-            jog =comboBox1.SelectedItem.ToString();
+            //jog =comboBox1.SelectedItem.ToString();
 
-            Users kesz = new Users(felhnev, jelszo, jog);
-            uj.Felhasznalok.Add(kesz);
+            //Users kesz = new Users(felhnev, jelszo, jog);
+            //uj.Felhasznalok.Add(kesz);
 
-            string adat = "data.txt";
-            StreamWriter iras = new StreamWriter(adat, true, Encoding.UTF8);
-            iras.WriteLine(FelhnTB.Text + ";" + JelszoTB.Text + ";" + jog);
-            iras.Close();
+            //string adat = "data.txt";
+            //StreamWriter iras = new StreamWriter(adat, true, Encoding.UTF8);
+            //iras.WriteLine(vezetekNevTB.Text + ";" + JelszoTB.Text + ";" + jog);
+            //iras.Close();
 
-            this.Visible = false;
-
+            //this.Visible = false;
+            conn.Open();
+            cmd = new MySqlCommand();
+            cmd.Connection = conn;
+            cmd.CommandText = "INSERT INTO vizga.User (`Employee_id`, `Password`, `First_name`, `Last_name`,`Admin`,`Leader`,`Operator`) VALUES('2', '" + JelszoTB.Text+"', '" + vezetekNevTB.Text + "', '"+keresztNevTB.Text+"', '1','0','0');";
+            dr = cmd.ExecuteReader();
+            if(!dr.Read())
+            {
+                MessageBox.Show("Felhasználó létrehozva!");
+            }
+            else
+            {
+                MessageBox.Show("Hiba!");
+            }
+            conn.Close();
         }
 
         private void LoginBT_Click(object sender, EventArgs e)
         {
             this.Visible = false;
-            
+            UcLogin ses = new UcLogin();
+            ses.Visible = true;
+            ses.Show();
+            ses.BringToFront();
             
             
         }
 
-        private void FelhnTB_Leave(object sender, EventArgs e)
+        private void vezetekNevTB_Leave(object sender, EventArgs e)
         {
-            felhnev = FelhnTB.Text;
-            uj.setFelhn(felhnev);
-            FelhnTB.Text = uj.FelhN;
-            
+            vezeteknev = vezetekNevTB.Text;         
+            uj.setVezet(vezeteknev);
+            vezetekNevTB.Text = uj.VezetekNev;
+        }
+
+        private void keresztNevTB_Leave(object sender, EventArgs e)
+        {
+            keresztnev = keresztNevTB.Text;
+            uj.setKereszt(keresztnev);
+            keresztNevTB.Text = uj.KeresztNev;
+
         }
 
         private void JelszoTB_Leave(object sender, EventArgs e)
@@ -76,5 +120,6 @@ namespace Elovizsga
         {
             
         }
+
     }
 }

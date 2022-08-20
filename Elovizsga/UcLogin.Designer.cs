@@ -41,7 +41,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Akashi_hun", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(127, 263);
+            this.label2.Location = new System.Drawing.Point(412, 322);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(83, 23);
             this.label2.TabIndex = 13;
@@ -51,7 +51,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Akashi_hun", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(127, 171);
+            this.label1.Location = new System.Drawing.Point(412, 230);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(186, 23);
             this.label1.TabIndex = 12;
@@ -61,18 +61,18 @@
             // 
             this.bejelentkezLL.AutoSize = true;
             this.bejelentkezLL.Font = new System.Drawing.Font("Akashi_hun", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bejelentkezLL.Location = new System.Drawing.Point(296, 44);
+            this.bejelentkezLL.Location = new System.Drawing.Point(581, 103);
             this.bejelentkezLL.Name = "bejelentkezLL";
             this.bejelentkezLL.Size = new System.Drawing.Size(236, 34);
             this.bejelentkezLL.TabIndex = 11;
             this.bejelentkezLL.Text = "Bejelentkezés";
-            this.bejelentkezLL.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.bejelentkezLL.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // RegBT
             // 
             this.RegBT.FlatAppearance.BorderSize = 0;
             this.RegBT.Font = new System.Drawing.Font("Akashi_hun", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.RegBT.Location = new System.Drawing.Point(313, 536);
+            this.RegBT.Location = new System.Drawing.Point(598, 595);
             this.RegBT.Name = "RegBT";
             this.RegBT.Size = new System.Drawing.Size(153, 35);
             this.RegBT.TabIndex = 10;
@@ -84,7 +84,7 @@
             // 
             this.loginBT.FlatAppearance.BorderSize = 0;
             this.loginBT.Font = new System.Drawing.Font("Akashi_hun", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.loginBT.Location = new System.Drawing.Point(302, 441);
+            this.loginBT.Location = new System.Drawing.Point(587, 500);
             this.loginBT.Name = "loginBT";
             this.loginBT.Size = new System.Drawing.Size(182, 62);
             this.loginBT.TabIndex = 9;
@@ -95,7 +95,7 @@
             // JelszoTB
             // 
             this.JelszoTB.Font = new System.Drawing.Font("Akashi_hun", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.JelszoTB.Location = new System.Drawing.Point(302, 288);
+            this.JelszoTB.Location = new System.Drawing.Point(587, 347);
             this.JelszoTB.Name = "JelszoTB";
             this.JelszoTB.PasswordChar = '*';
             this.JelszoTB.Size = new System.Drawing.Size(188, 29);
@@ -104,7 +104,7 @@
             // FelhnTB
             // 
             this.FelhnTB.Font = new System.Drawing.Font("Akashi_hun", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.FelhnTB.Location = new System.Drawing.Point(302, 197);
+            this.FelhnTB.Location = new System.Drawing.Point(587, 256);
             this.FelhnTB.Name = "FelhnTB";
             this.FelhnTB.Size = new System.Drawing.Size(188, 29);
             this.FelhnTB.TabIndex = 7;
@@ -124,7 +124,7 @@
             this.Controls.Add(this.JelszoTB);
             this.Controls.Add(this.FelhnTB);
             this.Name = "UcLogin";
-            this.Size = new System.Drawing.Size(822, 627);
+            this.Size = new System.Drawing.Size(1426, 820);
             this.Load += new System.EventHandler(this.UcLogin_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
