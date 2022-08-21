@@ -38,19 +38,16 @@
             this.beerkezBT = new System.Windows.Forms.Button();
             this.adminBT = new System.Windows.Forms.Button();
             this.mainBT = new System.Windows.Forms.Button();
-            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.closeLL = new System.Windows.Forms.Label();
+            this.panel3 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.ucLogin1 = new Elovizsga.UcLogin();
-            this.ucReg1 = new Elovizsga.UcReg();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            this.flowLayoutPanel1.SuspendLayout();
+            this.panel3.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -180,117 +177,73 @@
             this.mainBT.UseVisualStyleBackColor = false;
             this.mainBT.Click += new System.EventHandler(this.mainBT_Click);
             // 
-            // flowLayoutPanel1
+            // closeLL
             // 
-            this.flowLayoutPanel1.BackColor = System.Drawing.Color.MediumTurquoise;
-            this.flowLayoutPanel1.Controls.Add(this.label1);
-            this.flowLayoutPanel1.Controls.Add(this.label3);
-            this.flowLayoutPanel1.Controls.Add(this.label2);
-            this.flowLayoutPanel1.Controls.Add(this.label4);
-            this.flowLayoutPanel1.Controls.Add(this.label5);
-            this.flowLayoutPanel1.Controls.Add(this.label6);
-            this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.flowLayoutPanel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.flowLayoutPanel1.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(200, 0);
-            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(1426, 100);
-            this.flowLayoutPanel1.TabIndex = 0;
-            this.flowLayoutPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.flowLayoutPanel1_Paint);
+            this.closeLL.AutoSize = true;
+            this.closeLL.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.closeLL.Location = new System.Drawing.Point(1401, 3);
+            this.closeLL.Name = "closeLL";
+            this.closeLL.Size = new System.Drawing.Size(21, 20);
+            this.closeLL.TabIndex = 10;
+            this.closeLL.Text = "X";
+            this.closeLL.Click += new System.EventHandler(this.label7_Click);
+            this.closeLL.MouseEnter += new System.EventHandler(this.closeLL_MouseEnter);
+            this.closeLL.MouseLeave += new System.EventHandler(this.closeLL_MouseLeave);
+            // 
+            // panel3
+            // 
+            this.panel3.Controls.Add(this.label4);
+            this.panel3.Controls.Add(this.label3);
+            this.panel3.Controls.Add(this.label2);
+            this.panel3.Controls.Add(this.label1);
+            this.panel3.Controls.Add(this.closeLL);
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel3.Location = new System.Drawing.Point(200, 0);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(1426, 100);
+            this.panel3.TabIndex = 1;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label1.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.label1.Location = new System.Drawing.Point(3, 0);
+            this.label1.Font = new System.Drawing.Font("Akashi_hun", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.SystemColors.Highlight;
+            this.label1.Location = new System.Drawing.Point(6, 12);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(117, 24);
-            this.label1.TabIndex = 4;
+            this.label1.Size = new System.Drawing.Size(109, 18);
+            this.label1.TabIndex = 11;
             this.label1.Text = "Felhasználó:";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Dock = System.Windows.Forms.DockStyle.Top;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label3.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.label3.Location = new System.Drawing.Point(126, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(60, 24);
-            this.label3.TabIndex = 6;
-            this.label3.Text = "label3";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label2.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.label2.Location = new System.Drawing.Point(192, 0);
+            this.label2.Font = new System.Drawing.Font("Akashi_hun", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(122, 13);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(172, 24);
-            this.label2.TabIndex = 5;
-            this.label2.Text = "Bejelentkezési idő: ";
+            this.label2.Size = new System.Drawing.Size(56, 18);
+            this.label2.TabIndex = 12;
+            this.label2.Text = "label2";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Akashi_hun", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.SystemColors.Highlight;
+            this.label3.Location = new System.Drawing.Point(9, 66);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(236, 18);
+            this.label3.TabIndex = 13;
+            this.label3.Text = "Dátum és bejelentkezési idő:";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Dock = System.Windows.Forms.DockStyle.Top;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label4.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.label4.Location = new System.Drawing.Point(370, 0);
+            this.label4.Font = new System.Drawing.Font("Akashi_hun", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(251, 66);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(60, 24);
-            this.label4.TabIndex = 7;
+            this.label4.Size = new System.Drawing.Size(56, 18);
+            this.label4.TabIndex = 14;
             this.label4.Text = "label4";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Dock = System.Windows.Forms.DockStyle.Top;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label5.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.label5.Location = new System.Drawing.Point(436, 0);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(115, 24);
-            this.label5.TabIndex = 8;
-            this.label5.Text = "Jogosultság:";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Dock = System.Windows.Forms.DockStyle.Top;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label6.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.label6.Location = new System.Drawing.Point(557, 0);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(60, 24);
-            this.label6.TabIndex = 9;
-            this.label6.Text = "label6";
-            // 
-            // ucLogin1
-            // 
-            this.ucLogin1.AutoSize = true;
-            this.ucLogin1.BackColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.ucLogin1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ucLogin1.Location = new System.Drawing.Point(200, 100);
-            this.ucLogin1.Name = "ucLogin1";
-            this.ucLogin1.Size = new System.Drawing.Size(1426, 820);
-            this.ucLogin1.TabIndex = 0;
-            this.ucLogin1.Load += new System.EventHandler(this.ucLogin1_Load);
-            // 
-            // ucReg1
-            // 
-            this.ucReg1.AutoSize = true;
-            this.ucReg1.BackColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.ucReg1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ucReg1.Location = new System.Drawing.Point(200, 100);
-            this.ucReg1.Name = "ucReg1";
-            this.ucReg1.Size = new System.Drawing.Size(1426, 820);
-            this.ucReg1.TabIndex = 1;
-            this.ucReg1.Load += new System.EventHandler(this.ucReg1_Load);
             // 
             // ControlPanel
             // 
@@ -298,9 +251,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Silver;
             this.ClientSize = new System.Drawing.Size(1626, 920);
-            this.Controls.Add(this.ucLogin1);
-            this.Controls.Add(this.ucReg1);
-            this.Controls.Add(this.flowLayoutPanel1);
+            this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel1);
             this.ImeMode = System.Windows.Forms.ImeMode.Hiragana;
             this.Name = "ControlPanel";
@@ -309,10 +260,9 @@
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            this.flowLayoutPanel1.ResumeLayout(false);
-            this.flowLayoutPanel1.PerformLayout();
+            this.panel3.ResumeLayout(false);
+            this.panel3.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -320,21 +270,18 @@
 
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button mainBT;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private System.Windows.Forms.Button adminBT;
         private System.Windows.Forms.Button raktarBT;
         private System.Windows.Forms.Button beerkezBT;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Button kijelentkezBT;
         private System.Windows.Forms.Button userProfilBT;
-        private UcReg ucReg1;
-        private UcLogin ucLogin1;
+        private System.Windows.Forms.Label closeLL;
+        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label3;
     }
 }

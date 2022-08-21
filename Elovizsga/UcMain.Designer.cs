@@ -74,9 +74,9 @@
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.flowLayoutPanel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.flowLayoutPanel1.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(200, 0);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(201, 0);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(1038, 100);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(1037, 100);
             this.flowLayoutPanel1.TabIndex = 4;
             // 
             // label1
@@ -274,7 +274,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(200, 822);
+            this.panel1.Size = new System.Drawing.Size(201, 822);
             this.panel1.TabIndex = 10;
             // 
             // panel3
@@ -285,7 +285,7 @@
             this.panel3.Controls.Add(this.button2);
             this.panel3.Location = new System.Drawing.Point(0, 0);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(200, 286);
+            this.panel3.Size = new System.Drawing.Size(201, 286);
             this.panel3.TabIndex = 1;
             // 
             // button1

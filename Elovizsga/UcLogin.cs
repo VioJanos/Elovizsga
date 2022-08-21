@@ -116,5 +116,10 @@ namespace Elovizsga
             //}
             //olvas.Close();
         }
+
+        private void bejelentkezLL_MouseEnter(object sender, EventArgs e)
+        {
+            
+        }
     }
 }

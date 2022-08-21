@@ -16,7 +16,7 @@ namespace Elovizsga
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new ControlPanel());
+            Application.Run(new LoginForm());
         }
     }
 }

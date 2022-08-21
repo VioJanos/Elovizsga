@@ -42,3 +42,5 @@ D:\Szoftverfejlesztés és tesztelés\Programozás és adatbáziskezelés\Vizsga
 D:\Szoftverfejlesztés és tesztelés\Programozás és adatbáziskezelés\VizsgaMunka_2022\Elovizsga\Elovizsga\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
 D:\Szoftverfejlesztés és tesztelés\Programozás és adatbáziskezelés\VizsgaMunka_2022\Elovizsga\Elovizsga\bin\Debug\System.Threading.Tasks.Extensions.xml
 D:\Szoftverfejlesztés és tesztelés\Programozás és adatbáziskezelés\VizsgaMunka_2022\Elovizsga\Elovizsga\obj\Debug\Elovizsga.csproj.CopyComplete
+D:\Szoftverfejlesztés és tesztelés\Programozás és adatbáziskezelés\VizsgaMunka_2022\Elovizsga\Elovizsga\obj\Debug\Elovizsga.LoginForm.resources
+D:\Szoftverfejlesztés és tesztelés\Programozás és adatbáziskezelés\VizsgaMunka_2022\Elovizsga\Elovizsga\obj\Debug\Elovizsga.RegForm.resources

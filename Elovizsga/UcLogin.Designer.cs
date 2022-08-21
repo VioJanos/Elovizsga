@@ -67,6 +67,7 @@
             this.bejelentkezLL.TabIndex = 11;
             this.bejelentkezLL.Text = "Bejelentkezés";
             this.bejelentkezLL.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.bejelentkezLL.MouseEnter += new System.EventHandler(this.bejelentkezLL_MouseEnter);
             // 
             // RegBT
             // 
