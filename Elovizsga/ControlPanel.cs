@@ -14,6 +14,7 @@ namespace Elovizsga
 {
     public partial class ControlPanel : Form
     {
+        //Csatlakozás az adatbázishoz
         MySqlConnection conn;
         string connstring;
         MySqlCommand cmd;
@@ -29,7 +30,6 @@ namespace Elovizsga
                 conn = new MySqlConnection();
                 conn.ConnectionString = connstring;
                 conn.Open();
-                //MessageBox.Show("DB hozzáférés checked!");
 
             }
             catch (MySqlException ex)
@@ -49,7 +49,7 @@ namespace Elovizsga
         {
 
         }
-
+        //Amikor betölt a program beolvassa a log.txt és kinyeri belőle az adatokat. Utána lekérdezi annak a felhasználónak a nevét amelyiknek a username attributuma megegyezik a log.txt-ben eltároltal.És kiírja a nevet és a regisztráció dátumát.
         private void ControlPanel_Load(object sender, EventArgs e)
         {
             string log = "log.txt";
@@ -95,20 +95,25 @@ namespace Elovizsga
         {
 
         }
-
+        ////Alkalmazás bezárása x re kattintva
         private void label7_Click(object sender, EventArgs e)
         {
             Application.Exit();
         }
-
+        //x re húzva a színe változik
         private void closeLL_MouseEnter(object sender, EventArgs e)
         {
             closeLL.ForeColor = Color.Red;
         }
-
+        //x ről elhúzva a színe változik
         private void closeLL_MouseLeave(object sender, EventArgs e)
         {
             closeLL.ForeColor = Color.Black;
+        }
+        //Alkalmazás újraindítása
+        private void kijelentkezBT_Click(object sender, EventArgs e)
+        {
+            Application.Restart();
         }
     }
 }

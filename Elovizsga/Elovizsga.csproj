@@ -123,23 +123,11 @@
     <Compile Include="RegForm.Designer.cs">
       <DependentUpon>RegForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="UcLogin.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="UcLogin.Designer.cs">
-      <DependentUpon>UcLogin.cs</DependentUpon>
-    </Compile>
     <Compile Include="UcMain.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="UcMain.Designer.cs">
       <DependentUpon>UcMain.cs</DependentUpon>
-    </Compile>
-    <Compile Include="UcReg.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="UcReg.Designer.cs">
-      <DependentUpon>UcReg.cs</DependentUpon>
     </Compile>
     <Compile Include="Users.cs" />
     <EmbeddedResource Include="ControlPanel.resx">
@@ -156,14 +144,8 @@
     <EmbeddedResource Include="RegForm.resx">
       <DependentUpon>RegForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UcLogin.resx">
-      <DependentUpon>UcLogin.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="UcMain.resx">
       <DependentUpon>UcMain.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UcReg.resx">
-      <DependentUpon>UcReg.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

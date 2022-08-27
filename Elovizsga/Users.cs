@@ -8,22 +8,28 @@ namespace Elovizsga
 {
     internal class Users
     {
+        public int Id { get; private set; }
         public string VezetekNev{ get;  private set; }
         public string KeresztNev { get; private set; }
         public string Jelszo { get; private set; }
         public string Jogosultsag { get; private set; }
+        public string Email { get; private set; }
+        public string Szuletesnap { get; private set; }
 
         public Users()
         {
 
         }
         
-        public Users(string vezeteknev, string keresztnev, string jelszo, string jogosultsag)
+        public Users(int id, string vezeteknev, string keresztnev, string jelszo, string jogosultsag, string email, string szuletssnap)
         {
+            Id = id;
             VezetekNev = vezeteknev;
             KeresztNev = keresztnev;
             Jelszo = jelszo;
             Jogosultsag = jogosultsag;
+            Email = email;
+            Szuletesnap = szuletssnap;
         }
 
         public void setVezet(string vezeteknev)
@@ -71,6 +77,44 @@ namespace Elovizsga
                 Jelszo = "asd987654321";
             }
 
+        }
+
+        public void setJogosultsag(string jogosultsag)
+        {
+            if (jogosultsag == "Admin")
+            {
+                Jogosultsag = jogosultsag;
+                
+            }
+            else if (jogosultsag == "Vezető")
+            {
+                Jogosultsag = jogosultsag;  
+            }
+            else
+            {
+                Jogosultsag = "Felhasználó";   
+            }
+        }
+
+        public int setID(int id)
+        {
+            id++;
+            Id = id;
+            return id;
+        }
+
+        public void setSzulDate(string szuletes)
+        {
+            Szuletesnap = szuletes;
+
+        }
+
+        public void setEmail(string mail)
+        {
+            if(mail.Contains("@"))
+            {
+                Email = mail;
+            }
         }
         public List<Users> Felhasznalok = new List<Users>();
 

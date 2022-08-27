@@ -4,8 +4,6 @@ D:\Szoftverfejlesztés és tesztelés\Programozás és adatbáziskezelés\Vizsga
 D:\Szoftverfejlesztés és tesztelés\Programozás és adatbáziskezelés\VizsgaMunka_2022\Elovizsga\Elovizsga\obj\Debug\Elovizsga.csproj.AssemblyReference.cache
 D:\Szoftverfejlesztés és tesztelés\Programozás és adatbáziskezelés\VizsgaMunka_2022\Elovizsga\Elovizsga\obj\Debug\Elovizsga.csproj.SuggestedBindingRedirects.cache
 D:\Szoftverfejlesztés és tesztelés\Programozás és adatbáziskezelés\VizsgaMunka_2022\Elovizsga\Elovizsga\obj\Debug\Elovizsga.Properties.Resources.resources
-D:\Szoftverfejlesztés és tesztelés\Programozás és adatbáziskezelés\VizsgaMunka_2022\Elovizsga\Elovizsga\obj\Debug\Elovizsga.UcLogin.resources
-D:\Szoftverfejlesztés és tesztelés\Programozás és adatbáziskezelés\VizsgaMunka_2022\Elovizsga\Elovizsga\obj\Debug\Elovizsga.UcReg.resources
 D:\Szoftverfejlesztés és tesztelés\Programozás és adatbáziskezelés\VizsgaMunka_2022\Elovizsga\Elovizsga\obj\Debug\Elovizsga.csproj.GenerateResource.cache
 D:\Szoftverfejlesztés és tesztelés\Programozás és adatbáziskezelés\VizsgaMunka_2022\Elovizsga\Elovizsga\obj\Debug\Elovizsga.csproj.CoreCompileInputs.cache
 D:\Szoftverfejlesztés és tesztelés\Programozás és adatbáziskezelés\VizsgaMunka_2022\Elovizsga\Elovizsga\obj\Debug\Elovizsga.exe

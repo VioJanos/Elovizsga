@@ -14,6 +14,7 @@ namespace Elovizsga
 {
     public partial class LoginForm : Form
     {
+        //Csatlakozás az adatbázishoz
         MySqlConnection conn;
         string connstring;
         MySqlCommand cmd;
@@ -40,21 +41,23 @@ namespace Elovizsga
             conn.Close();
         }
         RegForm s = new RegForm();
+
+        //x re húzva a színe változik
         private void closeLL_MouseEnter(object sender, EventArgs e)
         {
             closeLL.ForeColor = Color.Red;
         }
-
+        //x ről elhúzva a színe változik
         private void closeLL_MouseLeave(object sender, EventArgs e)
         {
             closeLL.ForeColor= Color.Black;
         }
-
+        //Alkalmazás bezárása x re kattintva
         private void closeLL_Click(object sender, EventArgs e)
         {
-            this.Close();
+            Application.Exit();
         }
-
+        //Bejelentkezés adatbázisban meglévő felhasználóval, és egy log.txt fájl készítése Username és aktuális dátum óra perc adatokkal. Főprogram előjön.
         private void loginBT_Click(object sender, EventArgs e)
         {
             conn.Open();
@@ -82,7 +85,7 @@ namespace Elovizsga
             }
             conn.Close();
         }
-
+        //Átirányít a regisztrációs formra
         private void toRegLL_Click(object sender, EventArgs e)
         {
             s.Show();
@@ -93,12 +96,12 @@ namespace Elovizsga
         {
             
         }
-
+        // szövegszínének megváltoztatása
         private void toRegLL_MouseLeave(object sender, EventArgs e)
         {
             toRegLL.ForeColor= Color.Black;
         }
-
+        // szövegszínének megváltoztatása
         private void toRegLL_MouseEnter(object sender, EventArgs e)
         {
             toRegLL.ForeColor = Color.BlueViolet;
