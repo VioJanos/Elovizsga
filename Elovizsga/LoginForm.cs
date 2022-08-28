@@ -31,7 +31,6 @@ namespace Elovizsga
                 conn = new MySqlConnection();
                 conn.ConnectionString = connstring;
                 conn.Open();
-                //MessageBox.Show("DB hozzáférés checked!");
 
             }
             catch (MySqlException ex)
@@ -60,30 +59,7 @@ namespace Elovizsga
         //Bejelentkezés adatbázisban meglévő felhasználóval, és egy log.txt fájl készítése Username és aktuális dátum óra perc adatokkal. Főprogram előjön.
         private void loginBT_Click(object sender, EventArgs e)
         {
-            conn.Open();
-            cmd = new MySqlCommand();
-            cmd.Connection = conn;
-            cmd.CommandText = "SELECT * FROM vizga.User where Username='" + FelhnTB.Text + "' and Password='" + JelszoTB.Text + "';";
-            dr = cmd.ExecuteReader();
-            if (dr.Read())
-            {
-                MessageBox.Show("Sikeres bejelentkezés!");
-                string login = "log.txt";
-                StreamWriter iras = new StreamWriter(login, false, Encoding.UTF8);
-                iras.WriteLine(FelhnTB.Text + ";" + DateTime.Now.ToLongDateString() +" "+  DateTime.Now.ToLongTimeString()); 
-                iras.Close();
-                ControlPanel a = new ControlPanel();
-                a.Show();
-                a.BringToFront();
-                this.Hide();
-            }
-            else
-            {
-                MessageBox.Show("Nem sikerült!");
-                FelhnTB.Text = "";
-                JelszoTB.Text = "";
-            }
-            conn.Close();
+            getBejelentkezes();
         }
         //Átirányít a regisztrációs formra
         private void toRegLL_Click(object sender, EventArgs e)
@@ -105,6 +81,34 @@ namespace Elovizsga
         private void toRegLL_MouseEnter(object sender, EventArgs e)
         {
             toRegLL.ForeColor = Color.BlueViolet;
+        }
+
+        public void getBejelentkezes()
+        {
+            conn.Open();
+            cmd = new MySqlCommand();
+            cmd.Connection = conn;
+            cmd.CommandText = "SELECT * FROM vizga.User where Username='" + FelhnTB.Text + "' and Password='" + JelszoTB.Text + "';";
+            dr = cmd.ExecuteReader();
+            if (dr.Read())
+            {
+                MessageBox.Show("Sikeres bejelentkezés!");
+                string login = "log.txt";
+                StreamWriter iras = new StreamWriter(login, false, Encoding.UTF8);
+                iras.WriteLine(FelhnTB.Text + ";" + DateTime.Now.ToLongDateString() + " " + DateTime.Now.ToLongTimeString());
+                iras.Close();
+                ControlPanel a = new ControlPanel();
+                a.Show();
+                a.BringToFront();
+                this.Hide();
+            }
+            else
+            {
+                MessageBox.Show("Nem sikerült!");
+                FelhnTB.Text = "";
+                JelszoTB.Text = "";
+            }
+            conn.Close();
         }
     }
 }

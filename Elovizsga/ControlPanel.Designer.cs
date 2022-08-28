@@ -44,6 +44,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.adminLL = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -116,6 +117,7 @@
             this.userProfilBT.TabIndex = 4;
             this.userProfilBT.Text = "Felhasználói fiók";
             this.userProfilBT.UseVisualStyleBackColor = false;
+            this.userProfilBT.Click += new System.EventHandler(this.userProfilBT_Click);
             // 
             // raktarBT
             // 
@@ -193,6 +195,7 @@
             // 
             // panel3
             // 
+            this.panel3.BackColor = System.Drawing.Color.MediumTurquoise;
             this.panel3.Controls.Add(this.label4);
             this.panel3.Controls.Add(this.label3);
             this.panel3.Controls.Add(this.label2);
@@ -246,12 +249,22 @@
             this.label1.TabIndex = 11;
             this.label1.Text = "Felhasználó:";
             // 
+            // adminLL
+            // 
+            this.adminLL.AutoSize = true;
+            this.adminLL.Location = new System.Drawing.Point(747, 551);
+            this.adminLL.Name = "adminLL";
+            this.adminLL.Size = new System.Drawing.Size(35, 13);
+            this.adminLL.TabIndex = 2;
+            this.adminLL.Text = "label5";
+            // 
             // ControlPanel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Silver;
             this.ClientSize = new System.Drawing.Size(1626, 920);
+            this.Controls.Add(this.adminLL);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel1);
             this.ImeMode = System.Windows.Forms.ImeMode.Hiragana;
@@ -264,6 +277,7 @@
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -284,5 +298,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label adminLL;
     }
 }

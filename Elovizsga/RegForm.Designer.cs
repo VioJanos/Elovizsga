@@ -29,6 +29,12 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.rosszEmailLL = new System.Windows.Forms.Label();
+            this.rosszDatumLL = new System.Windows.Forms.Label();
+            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.label7 = new System.Windows.Forms.Label();
+            this.emailTB = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
             this.toLoginLL = new System.Windows.Forms.Label();
             this.RegBT = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
@@ -42,10 +48,7 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
             this.closeLL = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.emailTB = new System.Windows.Forms.TextBox();
-            this.label7 = new System.Windows.Forms.Label();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.rosszJogosultsagLL = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
@@ -53,6 +56,9 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.Silver;
+            this.panel1.Controls.Add(this.rosszJogosultsagLL);
+            this.panel1.Controls.Add(this.rosszEmailLL);
+            this.panel1.Controls.Add(this.rosszDatumLL);
             this.panel1.Controls.Add(this.dateTimePicker1);
             this.panel1.Controls.Add(this.label7);
             this.panel1.Controls.Add(this.emailTB);
@@ -76,6 +82,65 @@
             this.panel1.MouseEnter += new System.EventHandler(this.panel1_MouseEnter);
             this.panel1.MouseLeave += new System.EventHandler(this.panel1_MouseLeave);
             // 
+            // rosszEmailLL
+            // 
+            this.rosszEmailLL.AutoSize = true;
+            this.rosszEmailLL.Location = new System.Drawing.Point(128, 333);
+            this.rosszEmailLL.Name = "rosszEmailLL";
+            this.rosszEmailLL.Size = new System.Drawing.Size(35, 13);
+            this.rosszEmailLL.TabIndex = 35;
+            this.rosszEmailLL.Text = "label8";
+            this.rosszEmailLL.Visible = false;
+            // 
+            // rosszDatumLL
+            // 
+            this.rosszDatumLL.AutoSize = true;
+            this.rosszDatumLL.Location = new System.Drawing.Point(125, 388);
+            this.rosszDatumLL.Name = "rosszDatumLL";
+            this.rosszDatumLL.Size = new System.Drawing.Size(35, 13);
+            this.rosszDatumLL.TabIndex = 34;
+            this.rosszDatumLL.Text = "label8";
+            this.rosszDatumLL.Visible = false;
+            // 
+            // dateTimePicker1
+            // 
+            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dateTimePicker1.Location = new System.Drawing.Point(171, 355);
+            this.dateTimePicker1.MinDate = new System.DateTime(1960, 12, 31, 0, 0, 0, 0);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.Size = new System.Drawing.Size(152, 20);
+            this.dateTimePicker1.TabIndex = 33;
+            this.dateTimePicker1.ValueChanged += new System.EventHandler(this.dateTimePicker1_ValueChanged);
+            this.dateTimePicker1.Leave += new System.EventHandler(this.dateTimePicker1_Leave);
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Akashi_hun", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(12, 354);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(148, 23);
+            this.label7.TabIndex = 32;
+            this.label7.Text = "Születési idő:";
+            // 
+            // emailTB
+            // 
+            this.emailTB.Location = new System.Drawing.Point(171, 300);
+            this.emailTB.Name = "emailTB";
+            this.emailTB.Size = new System.Drawing.Size(152, 20);
+            this.emailTB.TabIndex = 31;
+            this.emailTB.Leave += new System.EventHandler(this.emailTB_Leave);
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Akashi_hun", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(12, 300);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(67, 23);
+            this.label6.TabIndex = 30;
+            this.label6.Text = "Email:";
+            // 
             // toLoginLL
             // 
             this.toLoginLL.AutoSize = true;
@@ -94,9 +159,9 @@
             this.RegBT.FlatAppearance.BorderSize = 0;
             this.RegBT.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.RegBT.Font = new System.Drawing.Font("Akashi_hun", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.RegBT.Location = new System.Drawing.Point(12, 443);
+            this.RegBT.Location = new System.Drawing.Point(12, 471);
             this.RegBT.Name = "RegBT";
-            this.RegBT.Size = new System.Drawing.Size(494, 82);
+            this.RegBT.Size = new System.Drawing.Size(494, 63);
             this.RegBT.TabIndex = 28;
             this.RegBT.Text = "Regisztráció";
             this.RegBT.UseVisualStyleBackColor = true;
@@ -129,17 +194,18 @@
             "Admin",
             "Felhasználó",
             "Vezető"});
-            this.comboBox1.Location = new System.Drawing.Point(171, 401);
+            this.comboBox1.Location = new System.Drawing.Point(171, 413);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(152, 21);
             this.comboBox1.TabIndex = 25;
+            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             this.comboBox1.Leave += new System.EventHandler(this.comboBox1_Leave);
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Akashi_hun", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(12, 397);
+            this.label3.Location = new System.Drawing.Point(12, 409);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(142, 23);
             this.label3.TabIndex = 24;
@@ -217,43 +283,15 @@
             this.closeLL.MouseEnter += new System.EventHandler(this.closeLL_MouseEnter);
             this.closeLL.MouseLeave += new System.EventHandler(this.closeLL_MouseLeave);
             // 
-            // label6
+            // rosszJogosultsagLL
             // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Akashi_hun", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(12, 303);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(67, 23);
-            this.label6.TabIndex = 30;
-            this.label6.Text = "Email:";
-            // 
-            // emailTB
-            // 
-            this.emailTB.Location = new System.Drawing.Point(171, 303);
-            this.emailTB.Name = "emailTB";
-            this.emailTB.Size = new System.Drawing.Size(152, 20);
-            this.emailTB.TabIndex = 31;
-            this.emailTB.Leave += new System.EventHandler(this.emailTB_Leave);
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Akashi_hun", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(12, 354);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(148, 23);
-            this.label7.TabIndex = 32;
-            this.label7.Text = "Születési idő:";
-            // 
-            // dateTimePicker1
-            // 
-            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePicker1.Location = new System.Drawing.Point(171, 355);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(152, 20);
-            this.dateTimePicker1.TabIndex = 33;
-            this.dateTimePicker1.ValueChanged += new System.EventHandler(this.dateTimePicker1_ValueChanged);
-            this.dateTimePicker1.Leave += new System.EventHandler(this.dateTimePicker1_Leave);
+            this.rosszJogosultsagLL.AutoSize = true;
+            this.rosszJogosultsagLL.Location = new System.Drawing.Point(125, 443);
+            this.rosszJogosultsagLL.Name = "rosszJogosultsagLL";
+            this.rosszJogosultsagLL.Size = new System.Drawing.Size(35, 13);
+            this.rosszJogosultsagLL.TabIndex = 36;
+            this.rosszJogosultsagLL.Text = "label8";
+            this.rosszJogosultsagLL.Visible = false;
             // 
             // RegForm
             // 
@@ -291,5 +329,8 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox emailTB;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label rosszDatumLL;
+        private System.Windows.Forms.Label rosszEmailLL;
+        private System.Windows.Forms.Label rosszJogosultsagLL;
     }
 }

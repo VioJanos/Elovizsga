@@ -17,6 +17,7 @@ namespace Elovizsga
         //Csatlakozás az adatbázishoz
         MySqlConnection conn;
         string connstring;
+        int id;
         MySqlCommand cmd;
         MySqlDataReader dr;
 
@@ -31,8 +32,9 @@ namespace Elovizsga
                 conn = new MySqlConnection();
                 conn.ConnectionString = connstring;
                 conn.Open();
-                //MessageBox.Show("DB hozzáférés checked!");
-
+                getID();//Az adatbázisban következő ID-t adja az új felhasználónak
+                id++;
+                
             }
             catch (MySqlException ex)
             {
@@ -42,13 +44,11 @@ namespace Elovizsga
         }
         // Új példány létrehozása az osztályból, változók
         Users uj = new Users();
-        int id = 0;
         string vezeteknev = "";
         string keresztnev = "";
         string jelszo = "";
         string jogosultsag = "";
         string username = "";
-        string email = "";
         string szuletesido = "";
 
         //Alkalmazás bezárása x re kattintva
@@ -81,28 +81,10 @@ namespace Elovizsga
         {
             
         }
-        //Új felhasználó felvétele az adatbázisba, születési dátum még nem jó...
+        //Új felhasználó felvétele az adatbázisba
         private void RegBT_Click(object sender, EventArgs e)
         {
-               
-            conn.Open();
-            cmd = new MySqlCommand();
-            cmd.Connection = conn;
-            cmd.CommandText = "INSERT INTO vizga.User (`Employee_id`, `Password`, `First_name`, `Last_name`, `E-mail`, `Birth`) VALUES('" + uj.setID(id) + "', '" + JelszoTB.Text + "', '" + vezetekNevTB.Text + "', '" + keresztNevTB.Text + "', '" + email + "', '" + DateTime.Parse(szuletesido) + "');";
-            dr = cmd.ExecuteReader();
-            if (!dr.Read())
-            {
-                MessageBox.Show("Felhasználó létrehozva, bejelentkezhetsz!");
-                id++;
-                torol();
-                
-            }
-            else
-            {
-                MessageBox.Show("Hiba!");
-            }
-            conn.Close();
-            setJogos(jogosultsag);
+            setUjFelhasznalo();
         }
 
         //Vezetéknév ellenőrzése és beállítása
@@ -154,12 +136,49 @@ namespace Elovizsga
         }
         //Jogosultság beállítása osztályban
         private void comboBox1_Leave(object sender, EventArgs e)
-        {   
-            jogosultsag = comboBox1.SelectedItem.ToString();
-            uj.setJogosultsag(jogosultsag);
+        {
+            if (comboBox1.SelectedItem is null || comboBox1.SelectedIndex == 0)
+            {
+                rosszJogosultsagLL.ForeColor = Color.Red;
+                rosszJogosultsagLL.Text = "Kötelező megadni jogosultságot!";
+                RegBT.Enabled = false;
+                rosszJogosultsagLL.Visible = true;
+                comboBox1.Focus();
+            }
+            else
+            {
+                rosszDatumLL.Visible = false;
+                RegBT.Enabled = true;
+                jogosultsag = comboBox1.SelectedItem.ToString();
+                uj.setJogosultsag(jogosultsag);
+            }
+            
             
         }
+        public void setUjFelhasznalo()
+        {
+            conn.Open();
+            cmd = new MySqlCommand();
+            cmd.Connection = conn;
+            cmd.CommandText = "INSERT INTO vizga.User (`Employee_id`, `Password`, `First_name`, `Last_name`, `E-mail`) VALUES('" + uj.setID(id) + "', '" + JelszoTB.Text + "', '" + vezetekNevTB.Text + "', '" + keresztNevTB.Text + "', '" + emailTB.Text + "');";
+            dr = cmd.ExecuteReader();
+            if (!dr.Read())
+            {
+                MessageBox.Show("Felhasználó létrehozva, bejelentkezhetsz!");
+                id++;
+                torol();
 
+            }
+            else
+            {
+                MessageBox.Show("Hiba!");
+            }
+            conn.Close();
+            setJogos(jogosultsag);
+            setSzulido();
+            rosszJogosultsagLL.Visible = false;
+            rosszEmailLL.Visible = false;
+        }
         //Jogosultság beállítása adatbázisban osztályban lévő adat alapján
         private void setJogos(string jog)
         {
@@ -197,7 +216,7 @@ namespace Elovizsga
                     conn.Close();
                 }
             }
-            else
+            else if(jog == "Felhasználó")
             {
                 cmd.CommandText = "UPDATE vizga.User SET Operator = '1' WHERE USERNAME = @Username";
                 cmd.Parameters.AddWithValue("@Username", username);
@@ -215,15 +234,70 @@ namespace Elovizsga
         //Email ellenőrzése és beállítása
         private void emailTB_Leave(object sender, EventArgs e)
         {
-            email = emailTB.Text;
-            uj.setEmail(email);
+            if (!emailTB.Text.Contains("@"))
+            {
+                rosszEmailLL.ForeColor = Color.Red;
+                rosszEmailLL.Text = "Nem megfelelő email formátum! Írja be újra!";
+                rosszEmailLL.Visible = true;
+                emailTB.Clear();
+            }
+            else
+            {
+                rosszEmailLL.Visible = false; 
+                uj.setEmail(emailTB.Text);
+            }
         }
 
         //Születési idő ellenőrzése és beállítása
         private void dateTimePicker1_Leave(object sender, EventArgs e)
         {
-            szuletesido = Convert.ToString(dateTimePicker1.Text);
-            uj.setSzulDate(szuletesido);
+            if(dateTimePicker1.Value <= DateTime.MinValue)
+            {
+                rosszDatumLL.ForeColor = Color.Red;
+                rosszDatumLL.Visible = true;
+                rosszDatumLL.Text = "Túl régi dátum, add meg a valós születési dátumod.";
+                dateTimePicker1.Refresh();
+            }
+            else if(dateTimePicker1.Value >= DateTime.Now)
+            {
+                rosszDatumLL.ForeColor = Color.Red;
+                rosszDatumLL.Visible = true;
+                rosszDatumLL.Text = "Még meg sem születtél, add meg a valós születési dátumod.";
+                dateTimePicker1.Refresh();
+            }
+            else
+            {
+                rosszDatumLL.Visible = false;
+                szuletesido = Convert.ToString(dateTimePicker1.Text);
+                uj.setSzulDate(szuletesido);
+            }
+            
+
+        }
+
+        public void setSzulido()
+        {
+            username = vezeteknev.Substring(0, 3) + keresztnev.Substring(0, 3) + uj.Id;
+            conn.Open();
+            cmd = new MySqlCommand();
+            cmd.Connection = conn;
+            DateTime szulido = dateTimePicker1.Value;
+            string format = "yyyy-MM-dd";
+            string insert = @"UPDATE `vizga`.`User` set `Birth` = '"+szulido.ToString(format)+"' WHERE USERNAME = @Username";
+            cmd.Parameters.AddWithValue("@Username", username);
+            cmd.CommandText = insert;
+
+            dr = cmd.ExecuteReader();
+            if(!dr.Read())
+            {
+                conn.Close();
+
+            }
+            else
+            {
+                conn.Close();
+                MessageBox.Show("Hiba!");
+            }
         }
 
         //textboxok törlése
@@ -233,13 +307,44 @@ namespace Elovizsga
             keresztNevTB.Clear();
             JelszoTB.Clear();
             emailTB.Clear();
+            rosszEmailLL.Visible = false;
+            rosszJogosultsagLL.Visible = false;
             comboBox1.SelectedIndex = 0;
             
+        }
+
+        public void getID()
+        {
+            cmd = new MySqlCommand();
+            cmd.Connection = conn;
+            cmd.CommandText = "SELECT Employee_id FROM vizga.User order by Employee_id desc ";
+            dr = cmd.ExecuteReader();
+            if (dr.Read())
+            {
+                string ideig = dr["Employee_id"].ToString();
+                id = int.Parse(ideig);  
+            }
         }
 
         private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (comboBox1.SelectedItem is null || comboBox1.SelectedIndex == 0)
+            {
+                rosszJogosultsagLL.ForeColor = Color.Red;
+                rosszJogosultsagLL.Text = "Kötelező megadni jogosultságot!";
+                RegBT.Enabled = false;
+                rosszJogosultsagLL.Visible = true;
+            }
+            else
+            {
+                RegBT.Enabled = true;
+                rosszJogosultsagLL.Visible =false;
+            }
         }
     }
 }

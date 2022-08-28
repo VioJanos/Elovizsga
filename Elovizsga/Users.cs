@@ -14,7 +14,7 @@ namespace Elovizsga
         public string Jelszo { get; private set; }
         public string Jogosultsag { get; private set; }
         public string Email { get; private set; }
-        public string Szuletesnap { get; private set; }
+        public string Szuletesiido { get; private set; }
 
         public Users()
         {
@@ -29,7 +29,7 @@ namespace Elovizsga
             Jelszo = jelszo;
             Jogosultsag = jogosultsag;
             Email = email;
-            Szuletesnap = szuletssnap;
+            Szuletesiido = szuletssnap;
         }
 
         public void setVezet(string vezeteknev)
@@ -98,23 +98,18 @@ namespace Elovizsga
 
         public int setID(int id)
         {
-            id++;
             Id = id;
             return id;
         }
 
-        public void setSzulDate(string szuletes)
+        public void setSzulDate(string szulido)
         {
-            Szuletesnap = szuletes;
-
+          Szuletesiido = szulido;
         }
 
         public void setEmail(string mail)
         {
-            if(mail.Contains("@"))
-            {
-                Email = mail;
-            }
+            Email = mail;
         }
         public List<Users> Felhasznalok = new List<Users>();
 

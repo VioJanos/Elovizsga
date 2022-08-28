@@ -47,37 +47,20 @@ namespace Elovizsga
 
         private void mainBT_Click(object sender, EventArgs e)
         {
-
         }
-        //Amikor betölt a program beolvassa a log.txt és kinyeri belőle az adatokat. Utána lekérdezi annak a felhasználónak a nevét amelyiknek a username attributuma megegyezik a log.txt-ben eltároltal.És kiírja a nevet és a regisztráció dátumát.
+         
         private void ControlPanel_Load(object sender, EventArgs e)
         {
-            string log = "log.txt";
-            StreamReader olvas = new StreamReader(log, Encoding.UTF8);
-            string sor = "";
-            while (!olvas.EndOfStream)
-            {
-                sor = olvas.ReadLine();
-                string[] ideig = sor.Split(';');
-                if (!sor.Equals(""))
-                {
-                    username = ideig[0];
-                    datum = ideig[1];
-                }
-            }
-            olvas.Close();
+            //Amikor betölt a program beolvassa a log.txt és kinyeri belőle az adatokat.
+            fajlbolOlv();
+            //Utána lekérdezi annak a felhasználónak a nevét amelyiknek a username attributuma megegyezik a log.txt-ben eltároltal.És kiírja a nevet és a bejelentkezés dátumát.
+            getAdat();
 
-            conn.Open();
-            cmd = new MySqlCommand();
-            cmd.Connection = conn;
-            cmd.CommandText = "SELECT First_name, Last_name FROM vizga.User where Username= @Username;";
-            cmd.Parameters.AddWithValue("@Username",username);
-            dr = cmd.ExecuteReader();
-            if(dr.Read())
-            {
-                label2.Text = dr["First_name"].ToString() + " " + dr["Last_name"].ToString();
-                label4.Text = datum;
-            }
+            //Jogosultsághoz kötött bejelentkezés:
+            getJogA(username);
+            getJogL(username);
+            getJogO(username);
+
 
         }
 
@@ -95,7 +78,7 @@ namespace Elovizsga
         {
 
         }
-        ////Alkalmazás bezárása x re kattintva
+        //Alkalmazás bezárása x re kattintva
         private void label7_Click(object sender, EventArgs e)
         {
             Application.Exit();
@@ -114,6 +97,106 @@ namespace Elovizsga
         private void kijelentkezBT_Click(object sender, EventArgs e)
         {
             Application.Restart();
+        }
+
+        public void fajlbolOlv()
+        {
+            string log = "log.txt";
+            StreamReader olvas = new StreamReader(log, Encoding.UTF8);
+            string sor = "";
+            while (!olvas.EndOfStream)
+            {
+                sor = olvas.ReadLine();
+                string[] ideig = sor.Split(';');
+                if (!sor.Equals(""))
+                {
+                    username = ideig[0];
+                    datum = ideig[1];
+                }
+            }
+            olvas.Close();
+        }
+
+        public void getAdat()
+        {
+            conn.Open();
+            cmd = new MySqlCommand();
+            cmd.Connection = conn;
+            cmd.CommandText = "SELECT First_name, Last_name FROM vizga.User where Username= @Username;";
+            cmd.Parameters.AddWithValue("@Username", username);
+            dr = cmd.ExecuteReader();
+            if (dr.Read())
+            {
+                label2.Text = dr["First_name"].ToString() + " " + dr["Last_name"].ToString();
+                label4.Text = datum;
+                conn.Close();
+            }
+            else
+            {
+                conn.Close();
+            }
+        }
+
+        public void getJogA(string user)
+        {
+            conn.Open();
+            cmd = new MySqlCommand();
+            cmd.Connection = conn;
+            cmd.CommandText = "SELECT Username, Admin, Leader, Operator FROM vizga.User where Admin = '1' and Username = @Username;";
+            cmd.Parameters.AddWithValue("@Username", user);
+            dr = cmd.ExecuteReader();
+            if (dr.Read())
+            {
+                adminLL.Text = "Adminnal jelentkeztél be!";
+                conn.Close();
+            }
+            else
+            {
+                conn.Close();
+            }
+        }
+        public void getJogL(string user)
+        {
+            conn.Open();
+            cmd = new MySqlCommand();
+            cmd.Connection = conn;
+            cmd.CommandText = "SELECT Username, Admin, Leader, Operator FROM vizga.User where Leader = '1' and Username = @Username;";
+            cmd.Parameters.AddWithValue("@Username", user);
+            dr = cmd.ExecuteReader();
+            if (dr.Read())
+            {
+                adminLL.Text = "Vezetővel jelentkeztél be!";
+                conn.Close();
+            }
+            else
+            {
+                conn.Close();
+            }
+        }
+        public void getJogO(string user)
+        {
+            conn.Open();
+            cmd = new MySqlCommand();
+            cmd.Connection = conn;
+            cmd.CommandText = "SELECT Username, Admin, Leader, Operator FROM vizga.User where Operator = '1' and Username = @Username;";
+            cmd.Parameters.AddWithValue("@Username", user);
+            dr = cmd.ExecuteReader();
+            if (dr.Read())
+            {
+                adminLL.Text = "Felhasználóval jelentkeztél be!";
+                conn.Close();
+            }
+            else
+            {
+                conn.Close();
+            }
+        }
+
+        private void userProfilBT_Click(object sender, EventArgs e)
+        {
+            PasswChangeForm p1 = new PasswChangeForm();
+            p1.Show();
+            p1.BringToFront();
         }
     }
 }
