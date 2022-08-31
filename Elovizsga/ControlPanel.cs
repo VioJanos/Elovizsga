@@ -21,6 +21,7 @@ namespace Elovizsga
         MySqlDataReader dr;
         public ControlPanel()
         {
+            this.AutoSizeMode = AutoSizeMode.GrowOnly ;
             this.FormBorderStyle = FormBorderStyle.None;
             this.StartPosition = FormStartPosition.CenterScreen;
             InitializeComponent();
@@ -78,20 +79,51 @@ namespace Elovizsga
         {
 
         }
-        //Alkalmazás bezárása x re kattintva
-        private void label7_Click(object sender, EventArgs e)
+        //Alkalmazás bezárása és ablak méretezések és szinváltoztatás
+        private void closeBT_Click(object sender, EventArgs e)
         {
             Application.Exit();
         }
-        //x re húzva a színe változik
-        private void closeLL_MouseEnter(object sender, EventArgs e)
+        private void closeBT_MouseEnter(object sender, EventArgs e)
         {
-            closeLL.ForeColor = Color.Red;
+            closeBT.BackColor = Color.Red;
         }
-        //x ről elhúzva a színe változik
-        private void closeLL_MouseLeave(object sender, EventArgs e)
+        private void closeBT_MouseLeave(object sender, EventArgs e)
         {
-            closeLL.ForeColor = Color.Black;
+            closeBT.BackColor = panel4.BackColor;
+        }
+
+        private void maxBT_Click(object sender, EventArgs e)
+        {
+            if (WindowState is FormWindowState.Maximized)
+            {
+                WindowState = FormWindowState.Normal;
+            }
+            else
+            {
+                WindowState = FormWindowState.Maximized;
+            }
+        }
+        private void maxBT_MouseEnter(object sender, EventArgs e)
+        {
+            maxBT.BackColor = Color.Gray;
+        }
+        private void maxBT_MouseLeave(object sender, EventArgs e)
+        {
+            maxBT.BackColor = panel4.BackColor;
+        }
+        private void minBT_Click(object sender, EventArgs e)
+        {
+            WindowState = FormWindowState.Minimized;
+        }
+        private void minBT_MouseEnter(object sender, EventArgs e)
+        {
+            minBT.BackColor = Color.Gray;
+        }
+
+        private void minBT_MouseLeave(object sender, EventArgs e)
+        {
+            minBT.BackColor = panel4.BackColor;
         }
         //Alkalmazás újraindítása
         private void kijelentkezBT_Click(object sender, EventArgs e)
@@ -198,5 +230,23 @@ namespace Elovizsga
             p1.Show();
             p1.BringToFront();
         }
+        private void minPB_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void minPB_MouseEnter(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void minPB_MouseLeave(object sender, EventArgs e)
+        {
+           
+        }
+
+
+
+
     }
 }

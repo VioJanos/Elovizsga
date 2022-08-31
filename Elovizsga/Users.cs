@@ -67,7 +67,7 @@ namespace Elovizsga
         {
             if (jelszo.Any(char.IsUpper) && jelszo.Any(char.IsDigit))
             {
-                for (int i = 8; i <= jelszo.Length; i--)
+                for (int i = 8; i >= jelszo.Length; i--)
                 {
                     Jelszo = jelszo;
                 }
