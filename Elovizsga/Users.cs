@@ -67,7 +67,7 @@ namespace Elovizsga
         {
             if (jelszo.Any(char.IsUpper) && jelszo.Any(char.IsDigit))
             {
-                for (int i = 8; i <= jelszo.Length; i--)
+                for (int i = 8; i >= jelszo.Length; i--)
                 {
                     Jelszo = jelszo;
                 }
@@ -113,6 +113,38 @@ namespace Elovizsga
         }
         public List<Users> Felhasznalok = new List<Users>();
 
+    }
+
+    //Jelszó titkositás.Működik, de még nincs betéve a helyére!
+    internal class PassWDCryp : Users
+    {
+        public string EncodePassWD(string password)
+        {
+            try
+            {
+                byte[] titkoskulcs = new byte[password.Length];
+                titkoskulcs = System.Text.Encoding.UTF8.GetBytes(password);
+                string kodoltpassword = Convert.ToBase64String(titkoskulcs);
+                return kodoltpassword;
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception("Hiba a kódolásnál" + ex.Message);
+            }
+        }
+
+        public string DecodePassWD(string kodoltpassword)
+        {
+            System.Text.UTF8Encoding encoder = new System.Text.UTF8Encoding();
+            System.Text.Decoder utf8decoder = encoder.GetDecoder();
+            byte[] decode_byte = Convert.FromBase64String(kodoltpassword);
+            int karakterDB = utf8decoder.GetCharCount(decode_byte,0,decode_byte.Length);
+            char[] decode_char = new char[karakterDB];
+            utf8decoder.GetChars(decode_byte, 0, decode_byte.Length, decode_char, 0);
+            string eredmeny = new string(decode_char);
+            return eredmeny;
+        }
     }
 
 }

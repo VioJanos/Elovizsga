@@ -170,5 +170,14 @@
   <ItemGroup>
     <None Include="src\images.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="src\close-window.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="src\maximize-window.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="src\minimize-window.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
