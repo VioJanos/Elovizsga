@@ -1,1 +1,5 @@
+<<<<<<< HEAD
 ﻿KisPis1;2022. augusztus 31., szerda 17:30:15
+=======
+﻿KisPis1;2022. augusztus 31., szerda 17:51:09
+>>>>>>> 3082b04b89708d01191759615748d119137fa95b

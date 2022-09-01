@@ -41,18 +41,17 @@ namespace Elovizsga
         }
         RegForm s = new RegForm();
 
-        //x re húzva a színe változik
-        private void closeLL_MouseEnter(object sender, EventArgs e)
+        //x re húzva a színe változik és katt-ra bezárul
+        private void closeBT_MouseEnter(object sender, EventArgs e)
         {
-            closeLL.ForeColor = Color.Red;
+           closeBT.BackColor = Color.Red;
         }
-        //x ről elhúzva a színe változik
-        private void closeLL_MouseLeave(object sender, EventArgs e)
+
+        private void closeBT_MouseLeave(object sender, EventArgs e)
         {
-            closeLL.ForeColor= Color.Black;
+            closeBT.BackColor = panel2.BackColor;
         }
-        //Alkalmazás bezárása x re kattintva
-        private void closeLL_Click(object sender, EventArgs e)
+        private void closeBT_Click(object sender, EventArgs e)
         {
             Application.Exit();
         }
@@ -110,5 +109,7 @@ namespace Elovizsga
             }
             conn.Close();
         }
+
+
     }
 }

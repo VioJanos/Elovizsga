@@ -24,6 +24,7 @@ namespace Elovizsga
         {
             InitializeComponent();
             this.FormBorderStyle = FormBorderStyle.None;
+
             connstring = "SERVER = mysql.nethely.hu;PORT=3306; DATABASE=vizga;uid=vizga;PASSWORD=Janika208";
             try
             {
@@ -39,6 +40,7 @@ namespace Elovizsga
         }
         string username;
         string datum;
+
         private void ujJelszoBT_Click(object sender, EventArgs e)
         {
             ujJelszoGB.Visible = true;
@@ -48,7 +50,7 @@ namespace Elovizsga
 
         private void ujJelszoGB_Enter(object sender, EventArgs e)
         {
-            fajlbolOlv();   
+            fajlbolOlv();
         }
 
         public void getJelszo()
@@ -75,6 +77,7 @@ namespace Elovizsga
                     rosszJelszoLL.Text = "Nem eggyezik a régi jelszavaddal!";
                     rosszJelszoLL.Visible = true;
                     conn.Close();
+                    regiJelszoTB.Focus();
                 }
 
             }
@@ -122,28 +125,13 @@ namespace Elovizsga
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
-            if(checkBox1.Checked)
-            
+            if (checkBox1.Checked)
+
                 elkuldBT.Enabled = true;
-            
+
             else
                 elkuldBT.Enabled = false;
-            
-        }
 
-        private void closeLL_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
-        private void closeLL_MouseEnter(object sender, EventArgs e)
-        {
-            closeLL.ForeColor = Color.Red;
-        }
-
-        private void closeLL_MouseLeave(object sender, EventArgs e)
-        {
-            closeLL.ForeColor = Color.Black;
         }
 
         private void regiJelszoTB_Leave(object sender, EventArgs e)
@@ -189,21 +177,39 @@ namespace Elovizsga
 
         private void ujJelszoTB_Leave(object sender, EventArgs e)
         {
-            u1.setJelszo(ujJelszoTB.Text);
-            if(ujJelszoTB.Text != "asd987654321")
+            if(ujJelszoOkLL.Text == "Nem jó erősségű a jelszavad!")
             {
-                ujJelszoOkLL.Text = "Megfelelő a jelszó";
-                ujJelszoOkLL.ForeColor = Color.Green;
-                ujJelszoOkLL.Visible = true;
+                ujJelszoTB.Clear();
+                ujJelszoOkLL.Visible = false;
+                ujJelszoBT.Focus();
+            }
+            else
+            {
+                ujJelszoTB2.Focus();
+            }
+
+
+        }
+
+        private void ujJelszoTB_TextChanged(object sender, EventArgs e)
+        {
+            string jelszo = ujJelszoTB.Text.ToString();
+            if (jelszo.Any(char.IsUpper) && jelszo.Any(char.IsDigit))
+            {
+                for (int i = 8; i >= jelszo.Length; i--)
+                {
+                    u1.setJelszo(jelszo);
+                    ujJelszoOkLL.Text = "Megfelelő a jelszó";
+                    ujJelszoOkLL.ForeColor = Color.Green;
+                    ujJelszoOkLL.Visible = true;
+                }
             }
             else
             {
                 ujJelszoOkLL.ForeColor = Color.Red;
                 ujJelszoOkLL.Text = "Nem jó erősségű a jelszavad!";
                 ujJelszoOkLL.Visible = true;
-                ujJelszoTB.Clear();
             }
-
         }
     }
 }
