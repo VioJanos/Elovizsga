@@ -43,7 +43,8 @@ namespace Elovizsga
             conn.Close();
         }
         // Új példány létrehozása az osztályból, változók
-        Users uj = new Users();
+        //Users uj = new Users();
+        PassWDCryp uj = new PassWDCryp();
         string vezeteknev = "";
         string keresztnev = "";
         string jelszo = "";
@@ -113,9 +114,10 @@ namespace Elovizsga
         //Jelszó ellenőrzése és beállítása
         private void JelszoTB_Leave(object sender, EventArgs e)
         {
-            jelszo = JelszoTB.Text;
-            uj.setJelszo(JelszoTB.Text);
+            jelszo = JelszoTB.Text.ToString();
+            uj.setJelszo(jelszo);
             JelszoTB.Text = uj.Jelszo;
+            jelszo = uj.EncodePassWD(uj.Jelszo);
             emailTB.Focus();
             
         }
@@ -162,7 +164,7 @@ namespace Elovizsga
             conn.Open();
             cmd = new MySqlCommand();
             cmd.Connection = conn;
-            cmd.CommandText = "INSERT INTO vizga.User (`Employee_id`, `Password`, `First_name`, `Last_name`, `E-mail`) VALUES('" + uj.setID(id) + "', '" + JelszoTB.Text + "', '" + vezetekNevTB.Text + "', '" + keresztNevTB.Text + "', '" + emailTB.Text + "');";
+            cmd.CommandText = "INSERT INTO vizga.User (`Employee_id`, `Password`, `First_name`, `Last_name`, `E-mail`) VALUES('" + uj.setID(id) + "', '" + jelszo + "', '" + vezetekNevTB.Text + "', '" + keresztNevTB.Text + "', '" + emailTB.Text + "');";
             dr = cmd.ExecuteReader();
             if (!dr.Read())
             {

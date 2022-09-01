@@ -40,6 +40,7 @@ namespace Elovizsga
             conn.Close();
         }
         RegForm s = new RegForm();
+        PassWDCryp uj = new PassWDCryp();
 
         //x re húzva a színe változik és katt-ra bezárul
         private void closeBT_MouseEnter(object sender, EventArgs e)
@@ -84,10 +85,11 @@ namespace Elovizsga
 
         public void getBejelentkezes()
         {
+            string jelszo = uj.EncodePassWD(JelszoTB.Text);
             conn.Open();
             cmd = new MySqlCommand();
             cmd.Connection = conn;
-            cmd.CommandText = "SELECT * FROM vizga.User where Username='" + FelhnTB.Text + "' and Password='" + JelszoTB.Text + "';";
+            cmd.CommandText = "SELECT * FROM vizga.User where Username='" + FelhnTB.Text + "' and Password='" + jelszo + "';";
             dr = cmd.ExecuteReader();
             if (dr.Read())
             {

@@ -14,7 +14,7 @@ namespace Elovizsga
 {
     public partial class PasswChangeForm : Form
     {
-        Users u1 = new Users();
+        PassWDCryp uj = new PassWDCryp();
         MySqlConnection conn;
         string connstring;
         MySqlCommand cmd;
@@ -40,7 +40,7 @@ namespace Elovizsga
         }
         string username;
         string datum;
-
+        
         private void ujJelszoBT_Click(object sender, EventArgs e)
         {
             ujJelszoGB.Visible = true;
@@ -55,6 +55,7 @@ namespace Elovizsga
 
         public void getJelszo()
         {
+            string jelszo = uj.EncodePassWD(regiJelszoTB.Text);
             conn.Open();
             cmd = new MySqlCommand();
             cmd.Connection = conn;
@@ -63,7 +64,7 @@ namespace Elovizsga
             dr = cmd.ExecuteReader();
             if (dr.Read())
             {
-                if (regiJelszoTB.Text == dr["PASSWORD"].ToString())
+                if (jelszo == dr["PASSWORD"].ToString())
                 {
                     ujJelszoTB.Enabled = true;
                     ujJelszoTB2.Enabled = true;
@@ -87,7 +88,7 @@ namespace Elovizsga
             conn.Open();
             cmd = new MySqlCommand();
             cmd.Connection = conn;
-            cmd.CommandText = "UPDATE vizga.User SET PASSWORD = '" + u1.Jelszo + "' WHERE Username= @Username;";
+            cmd.CommandText = "UPDATE vizga.User SET PASSWORD = '" + ujJelszoTB.Text + "' WHERE Username= @Username;";
             cmd.Parameters.AddWithValue("@Username", username);
             dr = cmd.ExecuteReader();
             if (!dr.Read())
@@ -141,6 +142,8 @@ namespace Elovizsga
 
         private void ujJelszoTB2_Leave(object sender, EventArgs e)
         {
+            string jelszo = uj.EncodePassWD(ujJelszoTB2.Text);
+            ujJelszoTB2.Text = jelszo;
             if (ujJelszoTB.Text != ujJelszoTB2.Text)
             {
                 nemEggyezikLL.ForeColor = Color.Red;
@@ -198,10 +201,11 @@ namespace Elovizsga
             {
                 for (int i = 8; i >= jelszo.Length; i--)
                 {
-                    u1.setJelszo(jelszo);
+                    uj.setJelszo(jelszo);
                     ujJelszoOkLL.Text = "Megfelelő a jelszó";
                     ujJelszoOkLL.ForeColor = Color.Green;
                     ujJelszoOkLL.Visible = true;
+                    ujJelszoTB.Text = uj.EncodePassWD(jelszo);
                 }
             }
             else
