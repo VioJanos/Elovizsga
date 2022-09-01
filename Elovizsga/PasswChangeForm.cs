@@ -84,7 +84,7 @@ namespace Elovizsga
             conn.Open();
             cmd = new MySqlCommand();
             cmd.Connection = conn;
-            cmd.CommandText = "UPDATE vizga.User SET PASSWORD = '" + ujJelszoTB2.Text + "' WHERE Username= @Username;";
+            cmd.CommandText = "UPDATE vizga.User SET PASSWORD = '" + u1.Jelszo + "' WHERE Username= @Username;";
             cmd.Parameters.AddWithValue("@Username", username);
             dr = cmd.ExecuteReader();
             if (!dr.Read())
