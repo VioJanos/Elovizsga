@@ -48,6 +48,7 @@ namespace Elovizsga
 
         private void mainBT_Click(object sender, EventArgs e)
         {
+            pwChange1.Visible = false;
         }
          
         private void ControlPanel_Load(object sender, EventArgs e)
@@ -62,21 +63,6 @@ namespace Elovizsga
             getJogL(username);
             getJogO(username);
 
-
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void ucReg1_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void ucLogin1_Load(object sender, EventArgs e)
-        {
 
         }
         //Alkalmazás bezárása és ablak méretezések és szinváltoztatás
@@ -226,27 +212,11 @@ namespace Elovizsga
 
         private void userProfilBT_Click(object sender, EventArgs e)
         {
-            PasswChangeForm p1 = new PasswChangeForm();
-            p1.Show();
-            p1.BringToFront();
-        }
-        private void minPB_Click(object sender, EventArgs e)
-        {
+            //PasswChangeForm p1 = new PasswChangeForm();
+            //p1.Show();
+            //p1.BringToFront();
+            pwChange1.Visible = true;
             
         }
-
-        private void minPB_MouseEnter(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void minPB_MouseLeave(object sender, EventArgs e)
-        {
-           
-        }
-
-
-
-
     }
 }

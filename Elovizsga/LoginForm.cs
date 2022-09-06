@@ -85,23 +85,32 @@ namespace Elovizsga
 
         public void getBejelentkezes()
         {
-            string jelszo = uj.EncodePassWD(JelszoTB.Text);
             conn.Open();
             cmd = new MySqlCommand();
             cmd.Connection = conn;
-            cmd.CommandText = "SELECT * FROM vizga.User where Username='" + FelhnTB.Text + "' and Password='" + jelszo + "';";
+            cmd.CommandText = "SELECT PASSWORD FROM vizga.User where Username='" + FelhnTB.Text + "' ;";
             dr = cmd.ExecuteReader();
             if (dr.Read())
             {
-                MessageBox.Show("Sikeres bejelentkezés!");
-                string login = "log.txt";
-                StreamWriter iras = new StreamWriter(login, false, Encoding.UTF8);
-                iras.WriteLine(FelhnTB.Text + ";" + DateTime.Now.ToLongDateString() + " " + DateTime.Now.ToLongTimeString());
-                iras.Close();
-                ControlPanel a = new ControlPanel();
-                a.Show();
-                a.BringToFront();
-                this.Hide();
+                string jelszo = dr["PASSWORD"].ToString();
+                jelszo = uj.DecodePassWD(jelszo);
+                if(jelszo == JelszoTB.Text)
+                {
+                    MessageBox.Show("Sikeres bejelentkezés!");
+                    string login = "log.txt";
+                    StreamWriter iras = new StreamWriter(login, false, Encoding.UTF8);
+                    iras.WriteLine(FelhnTB.Text + ";" + DateTime.Now.ToLongDateString() + " " + DateTime.Now.ToLongTimeString());
+                    iras.Close();
+                    ControlPanel a = new ControlPanel();
+                    a.Show();
+                    a.BringToFront();
+                    this.Hide();
+                }
+                else
+                {
+                    MessageBox.Show("Hibás jelszó!");
+                }
+               
             }
             else
             {

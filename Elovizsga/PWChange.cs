@@ -12,19 +12,16 @@ using System.IO;
 
 namespace Elovizsga
 {
-    public partial class PasswChangeForm : Form
+    public partial class PWChange : UserControl
     {
         PassWDCryp uj = new PassWDCryp();
         MySqlConnection conn;
         string connstring;
         MySqlCommand cmd;
         MySqlDataReader dr;
-
-        public PasswChangeForm()
+        public PWChange()
         {
             InitializeComponent();
-            this.FormBorderStyle = FormBorderStyle.None;
-
             connstring = "SERVER = mysql.nethely.hu;PORT=3306; DATABASE=vizga;uid=vizga;PASSWORD=Janika208";
             try
             {
@@ -40,14 +37,12 @@ namespace Elovizsga
         }
         string username;
         string datum;
-        
         private void ujJelszoBT_Click(object sender, EventArgs e)
         {
             ujJelszoGB.Visible = true;
             ujJelszoTB.Enabled = false;
             ujJelszoTB2.Enabled = false;
         }
-
         private void ujJelszoGB_Enter(object sender, EventArgs e)
         {
             fajlbolOlv();
@@ -55,7 +50,6 @@ namespace Elovizsga
 
         public void getJelszo()
         {
-            string jelszo = uj.EncodePassWD(regiJelszoTB.Text);
             conn.Open();
             cmd = new MySqlCommand();
             cmd.Connection = conn;
@@ -64,7 +58,9 @@ namespace Elovizsga
             dr = cmd.ExecuteReader();
             if (dr.Read())
             {
-                if (jelszo == dr["PASSWORD"].ToString())
+                string jelszo = dr["PASSWORD"].ToString();
+                jelszo = uj.DecodePassWD(jelszo);
+                if (jelszo == regiJelszoTB.Text)
                 {
                     ujJelszoTB.Enabled = true;
                     ujJelszoTB2.Enabled = true;
@@ -85,10 +81,11 @@ namespace Elovizsga
         }
         public void setUjJelszo()
         {
+            string jelszo = uj.EncodePassWD(ujJelszoTB2.Text);
             conn.Open();
             cmd = new MySqlCommand();
             cmd.Connection = conn;
-            cmd.CommandText = "UPDATE vizga.User SET PASSWORD = '" + ujJelszoTB.Text + "' WHERE Username= @Username;";
+            cmd.CommandText = "UPDATE vizga.User SET PASSWORD = '" + jelszo + "' WHERE Username= @Username;";
             cmd.Parameters.AddWithValue("@Username", username);
             dr = cmd.ExecuteReader();
             if (!dr.Read())
@@ -106,24 +103,8 @@ namespace Elovizsga
         private void elkuldBT_Click(object sender, EventArgs e)
         {
             setUjJelszo();
-            this.Close();
 
         }
-
-        private void ujJelszoTB2_TextChanged(object sender, EventArgs e)
-        {
-            //if (ujJelszoTB.Text != ujJelszoTB2.Text)
-            //{
-            //    nemEggyezikLL.ForeColor = Color.Red;
-            //    nemEggyezikLL.Text = "Az új jelszók nem eggyeznek egymással.";
-            //    nemEggyezikLL.Visible = true;
-            //}
-            //else
-            //{
-            //    nemEggyezikLL.Visible = false;
-            //}
-        }
-
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
             if (checkBox1.Checked)
@@ -134,26 +115,20 @@ namespace Elovizsga
                 elkuldBT.Enabled = false;
 
         }
-
-        private void regiJelszoTB_Leave(object sender, EventArgs e)
-        {
-            //getJelszo();
-        }
-
         private void ujJelszoTB2_Leave(object sender, EventArgs e)
         {
-            string jelszo = uj.EncodePassWD(ujJelszoTB2.Text);
-            ujJelszoTB2.Text = jelszo;
-            if (ujJelszoTB.Text != ujJelszoTB2.Text)
-            {
-                nemEggyezikLL.ForeColor = Color.Red;
-                nemEggyezikLL.Text = "Az új jelszók nem eggyeznek egymással.";
-                nemEggyezikLL.Visible = true;
-            }
-            else
-            {
-                nemEggyezikLL.Visible = false;
-            }
+            //if (ujJelszoTB.Text != ujJelszoTB2.Text)
+            //{
+            //    nemEggyezikLL.ForeColor = Color.Red;
+            //    nemEggyezikLL.Text = "Az új jelszók nem eggyeznek egymással.";
+            //    nemEggyezikLL.Visible = true;
+            //    ujJelszoTB2.Text = "";
+            //    ujJelszoTB2.Focus();
+            //}
+            //else
+            //{
+            //    nemEggyezikLL.Visible = false;
+            //}
         }
 
         private void regiJelszoTB_TextChanged(object sender, EventArgs e)
@@ -180,7 +155,7 @@ namespace Elovizsga
 
         private void ujJelszoTB_Leave(object sender, EventArgs e)
         {
-            if(ujJelszoOkLL.Text == "Nem jó erősségű a jelszavad!")
+            if (ujJelszoOkLL.Text == "Nem jó erősségű a jelszavad!")
             {
                 ujJelszoTB.Clear();
                 ujJelszoOkLL.Visible = false;
@@ -205,7 +180,6 @@ namespace Elovizsga
                     ujJelszoOkLL.Text = "Megfelelő a jelszó";
                     ujJelszoOkLL.ForeColor = Color.Green;
                     ujJelszoOkLL.Visible = true;
-                    ujJelszoTB.Text = uj.EncodePassWD(jelszo);
                 }
             }
             else
@@ -214,6 +188,22 @@ namespace Elovizsga
                 ujJelszoOkLL.Text = "Nem jó erősségű a jelszavad!";
                 ujJelszoOkLL.Visible = true;
             }
+        }
+
+        private void ujJelszoTB2_TextChanged(object sender, EventArgs e)
+        {
+            if (ujJelszoTB.Text != ujJelszoTB2.Text)
+            {
+                nemEggyezikLL.ForeColor = Color.Red;
+                nemEggyezikLL.Text = "Az új jelszók nem eggyeznek egymással.";
+                nemEggyezikLL.Visible = true;
+            }
+            else
+            {
+                nemEggyezikLL.Visible = false;
+            }
+            //nemEggyezikLL.Visible = false;
+            //checkBox1.Checked = false;
         }
     }
 }

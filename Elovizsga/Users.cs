@@ -115,7 +115,7 @@ namespace Elovizsga
 
     }
 
-    //Jelszó titkositás.Működik, de még nincs betéve a helyére!
+    //Jelszó titkositás
     internal class PassWDCryp : Users
     {
         public string EncodePassWD(string password)
