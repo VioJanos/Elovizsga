@@ -39,9 +39,16 @@ namespace Elovizsga
         string datum;
         private void ujJelszoBT_Click(object sender, EventArgs e)
         {
-            ujJelszoGB.Visible = true;
-            ujJelszoTB.Enabled = false;
-            ujJelszoTB2.Enabled = false;
+            if(ujJelszoGB.Visible == false)
+            {
+                ujJelszoGB.Visible = true;
+                ujJelszoTB.Enabled = false;
+                ujJelszoTB2.Enabled = false;
+            }
+            else
+            {
+                ujJelszoGB.Visible = false;
+            }
         }
         private void ujJelszoGB_Enter(object sender, EventArgs e)
         {
@@ -202,8 +209,6 @@ namespace Elovizsga
             {
                 nemEggyezikLL.Visible = false;
             }
-            //nemEggyezikLL.Visible = false;
-            //checkBox1.Checked = false;
         }
     }
 }

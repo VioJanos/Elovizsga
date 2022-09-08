@@ -81,8 +81,6 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(691, 697);
             this.panel1.TabIndex = 0;
-            this.panel1.MouseEnter += new System.EventHandler(this.panel1_MouseEnter);
-            this.panel1.MouseLeave += new System.EventHandler(this.panel1_MouseLeave);
             // 
             // rosszJogosultsagLL
             // 
@@ -126,7 +124,6 @@
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(201, 22);
             this.dateTimePicker1.TabIndex = 33;
-            this.dateTimePicker1.ValueChanged += new System.EventHandler(this.dateTimePicker1_ValueChanged);
             this.dateTimePicker1.Leave += new System.EventHandler(this.dateTimePicker1_Leave);
             // 
             // label7
@@ -206,7 +203,6 @@
             this.keresztNevTB.Name = "keresztNevTB";
             this.keresztNevTB.Size = new System.Drawing.Size(201, 22);
             this.keresztNevTB.TabIndex = 26;
-            this.keresztNevTB.TextChanged += new System.EventHandler(this.keresztNevTB_TextChanged);
             this.keresztNevTB.Leave += new System.EventHandler(this.keresztNevTB_Leave);
             // 
             // comboBox1
@@ -275,7 +271,6 @@
             this.vezetekNevTB.Name = "vezetekNevTB";
             this.vezetekNevTB.Size = new System.Drawing.Size(201, 22);
             this.vezetekNevTB.TabIndex = 13;
-            this.vezetekNevTB.TextChanged += new System.EventHandler(this.vezetekNevTB_TextChanged);
             this.vezetekNevTB.Leave += new System.EventHandler(this.vezetekNevTB_Leave);
             // 
             // panel2

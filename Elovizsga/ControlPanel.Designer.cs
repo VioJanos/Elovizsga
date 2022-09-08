@@ -39,6 +39,8 @@
             this.adminBT = new System.Windows.Forms.Button();
             this.mainBT = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.adminLL = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
             this.minBT = new System.Windows.Forms.Button();
             this.maxBT = new System.Windows.Forms.Button();
@@ -47,8 +49,8 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.adminLL = new System.Windows.Forms.Label();
             this.pwChange1 = new Elovizsga.PWChange();
+            this.adminControllUC1 = new Elovizsga.AdminControllUC();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -68,7 +70,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel1.Location = new System.Drawing.Point(0, 100);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(200, 757);
+            this.panel1.Size = new System.Drawing.Size(200, 848);
             this.panel1.TabIndex = 0;
             // 
             // panel2
@@ -168,6 +170,7 @@
             this.adminBT.TabIndex = 1;
             this.adminBT.Text = "Admin felület";
             this.adminBT.UseVisualStyleBackColor = false;
+            this.adminBT.Click += new System.EventHandler(this.adminBT_Click);
             // 
             // mainBT
             // 
@@ -188,6 +191,8 @@
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.MediumTurquoise;
+            this.panel3.Controls.Add(this.adminLL);
+            this.panel3.Controls.Add(this.label5);
             this.panel3.Controls.Add(this.panel4);
             this.panel3.Controls.Add(this.label4);
             this.panel3.Controls.Add(this.label3);
@@ -197,8 +202,29 @@
             this.panel3.ImeMode = System.Windows.Forms.ImeMode.Katakana;
             this.panel3.Location = new System.Drawing.Point(0, 0);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(1443, 100);
+            this.panel3.Size = new System.Drawing.Size(1654, 100);
             this.panel3.TabIndex = 1;
+            // 
+            // adminLL
+            // 
+            this.adminLL.AutoSize = true;
+            this.adminLL.Font = new System.Drawing.Font("Akashi_hun", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.adminLL.Location = new System.Drawing.Point(1299, 14);
+            this.adminLL.Name = "adminLL";
+            this.adminLL.Size = new System.Drawing.Size(56, 18);
+            this.adminLL.TabIndex = 17;
+            this.adminLL.Text = "label6";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Akashi_hun", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.ForeColor = System.Drawing.SystemColors.Highlight;
+            this.label5.Location = new System.Drawing.Point(1179, 12);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(114, 18);
+            this.label5.TabIndex = 16;
+            this.label5.Text = "Jogosultság: ";
             // 
             // panel4
             // 
@@ -206,8 +232,8 @@
             this.panel4.Controls.Add(this.maxBT);
             this.panel4.Controls.Add(this.closeBT);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel4.Location = new System.Drawing.Point(1233, 0);
-            this.panel4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel4.Location = new System.Drawing.Point(1444, 0);
+            this.panel4.Margin = new System.Windows.Forms.Padding(2);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(210, 100);
             this.panel4.TabIndex = 15;
@@ -221,7 +247,7 @@
             this.minBT.FlatAppearance.BorderSize = 0;
             this.minBT.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.minBT.Location = new System.Drawing.Point(102, -2);
-            this.minBT.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.minBT.Margin = new System.Windows.Forms.Padding(2);
             this.minBT.Name = "minBT";
             this.minBT.Size = new System.Drawing.Size(32, 34);
             this.minBT.TabIndex = 18;
@@ -239,7 +265,7 @@
             this.maxBT.FlatAppearance.BorderSize = 0;
             this.maxBT.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.maxBT.Location = new System.Drawing.Point(138, -2);
-            this.maxBT.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.maxBT.Margin = new System.Windows.Forms.Padding(2);
             this.maxBT.Name = "maxBT";
             this.maxBT.Size = new System.Drawing.Size(32, 34);
             this.maxBT.TabIndex = 17;
@@ -257,7 +283,7 @@
             this.closeBT.FlatAppearance.BorderSize = 0;
             this.closeBT.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.closeBT.Location = new System.Drawing.Point(174, -2);
-            this.closeBT.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.closeBT.Margin = new System.Windows.Forms.Padding(2);
             this.closeBT.Name = "closeBT";
             this.closeBT.Size = new System.Drawing.Size(32, 34);
             this.closeBT.TabIndex = 16;
@@ -308,32 +334,32 @@
             this.label1.TabIndex = 11;
             this.label1.Text = "Felhasználó:";
             // 
-            // adminLL
-            // 
-            this.adminLL.AutoSize = true;
-            this.adminLL.Location = new System.Drawing.Point(747, 551);
-            this.adminLL.Name = "adminLL";
-            this.adminLL.Size = new System.Drawing.Size(35, 13);
-            this.adminLL.TabIndex = 2;
-            this.adminLL.Text = "label5";
-            // 
             // pwChange1
             // 
-            this.pwChange1.Dock = System.Windows.Forms.DockStyle.Left;
+            this.pwChange1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pwChange1.Location = new System.Drawing.Point(200, 100);
             this.pwChange1.Name = "pwChange1";
-            this.pwChange1.Size = new System.Drawing.Size(1243, 757);
+            this.pwChange1.Size = new System.Drawing.Size(1454, 848);
             this.pwChange1.TabIndex = 3;
             this.pwChange1.Visible = false;
+            // 
+            // adminControllUC1
+            // 
+            this.adminControllUC1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.adminControllUC1.Location = new System.Drawing.Point(200, 100);
+            this.adminControllUC1.Name = "adminControllUC1";
+            this.adminControllUC1.Size = new System.Drawing.Size(1454, 848);
+            this.adminControllUC1.TabIndex = 4;
+            this.adminControllUC1.Visible = false;
             // 
             // ControlPanel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Silver;
-            this.ClientSize = new System.Drawing.Size(1443, 857);
+            this.ClientSize = new System.Drawing.Size(1654, 948);
+            this.Controls.Add(this.adminControllUC1);
             this.Controls.Add(this.pwChange1);
-            this.Controls.Add(this.adminLL);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel3);
             this.ImeMode = System.Windows.Forms.ImeMode.Hiragana;
@@ -347,7 +373,6 @@
             this.panel3.PerformLayout();
             this.panel4.ResumeLayout(false);
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -367,11 +392,13 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label adminLL;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Button minBT;
         private System.Windows.Forms.Button maxBT;
         private System.Windows.Forms.Button closeBT;
         private PWChange pwChange1;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label adminLL;
+        private AdminControllUC adminControllUC1;
     }
 }

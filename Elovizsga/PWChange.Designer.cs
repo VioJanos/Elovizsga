@@ -47,9 +47,9 @@
             // ujJelszoBT
             // 
             this.ujJelszoBT.Font = new System.Drawing.Font("Akashi_hun", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ujJelszoBT.Location = new System.Drawing.Point(27, 39);
+            this.ujJelszoBT.Location = new System.Drawing.Point(17, 16);
             this.ujJelszoBT.Name = "ujJelszoBT";
-            this.ujJelszoBT.Size = new System.Drawing.Size(245, 188);
+            this.ujJelszoBT.Size = new System.Drawing.Size(168, 67);
             this.ujJelszoBT.TabIndex = 2;
             this.ujJelszoBT.Text = "Jelszó változtatás";
             this.ujJelszoBT.UseVisualStyleBackColor = true;
@@ -174,9 +174,9 @@
             this.ujJelszoGB.Controls.Add(this.label2);
             this.ujJelszoGB.Controls.Add(this.label1);
             this.ujJelszoGB.Font = new System.Drawing.Font("Akashi_hun", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ujJelszoGB.Location = new System.Drawing.Point(363, 212);
+            this.ujJelszoGB.Location = new System.Drawing.Point(17, 177);
             this.ujJelszoGB.Name = "ujJelszoGB";
-            this.ujJelszoGB.Size = new System.Drawing.Size(674, 469);
+            this.ujJelszoGB.Size = new System.Drawing.Size(674, 474);
             this.ujJelszoGB.TabIndex = 3;
             this.ujJelszoGB.TabStop = false;
             this.ujJelszoGB.Text = "ÚJ jelszó beállítása:";

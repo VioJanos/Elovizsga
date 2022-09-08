@@ -49,6 +49,7 @@ namespace Elovizsga
         private void mainBT_Click(object sender, EventArgs e)
         {
             pwChange1.Visible = false;
+            adminControllUC1.Visible = false;
         }
          
         private void ControlPanel_Load(object sender, EventArgs e)
@@ -68,7 +69,12 @@ namespace Elovizsga
         //Alkalmazás bezárása és ablak méretezések és szinváltoztatás
         private void closeBT_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+            DialogResult Exit;
+            Exit = MessageBox.Show("Bezárja a programot?","Mini ERP", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+            if(Exit == DialogResult.Yes)
+            {
+                Application.Exit();
+            }
         }
         private void closeBT_MouseEnter(object sender, EventArgs e)
         {
@@ -165,7 +171,7 @@ namespace Elovizsga
             dr = cmd.ExecuteReader();
             if (dr.Read())
             {
-                adminLL.Text = "Adminnal jelentkeztél be!";
+                adminLL.Text = "Admin";
                 conn.Close();
             }
             else
@@ -183,7 +189,8 @@ namespace Elovizsga
             dr = cmd.ExecuteReader();
             if (dr.Read())
             {
-                adminLL.Text = "Vezetővel jelentkeztél be!";
+                adminLL.Text = "Vezető";
+                adminBT.Enabled = false;
                 conn.Close();
             }
             else
@@ -201,7 +208,8 @@ namespace Elovizsga
             dr = cmd.ExecuteReader();
             if (dr.Read())
             {
-                adminLL.Text = "Felhasználóval jelentkeztél be!";
+                adminLL.Text = "Felhasználó";
+                adminBT.Enabled=false;
                 conn.Close();
             }
             else
@@ -212,11 +220,14 @@ namespace Elovizsga
 
         private void userProfilBT_Click(object sender, EventArgs e)
         {
-            //PasswChangeForm p1 = new PasswChangeForm();
-            //p1.Show();
-            //p1.BringToFront();
-            pwChange1.Visible = true;
-            
+            adminControllUC1.Visible = false;
+            pwChange1.Visible = true;   
+        }
+
+        private void adminBT_Click(object sender, EventArgs e)
+        {
+            pwChange1.Visible=false;
+            adminControllUC1.Visible = true;
         }
     }
 }

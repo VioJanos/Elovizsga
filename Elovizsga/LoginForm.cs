@@ -67,11 +67,6 @@ namespace Elovizsga
             s.Show();
             s.BringToFront();
         }
-
-        private void toRegLL_MouseHover(object sender, EventArgs e)
-        {
-            
-        }
         // szövegszínének megváltoztatása
         private void toRegLL_MouseLeave(object sender, EventArgs e)
         {
@@ -109,6 +104,8 @@ namespace Elovizsga
                 else
                 {
                     MessageBox.Show("Hibás jelszó!");
+                    JelszoTB.Clear();
+                    JelszoTB.Focus();
                 }
                
             }
@@ -120,7 +117,5 @@ namespace Elovizsga
             }
             conn.Close();
         }
-
-
     }
 }

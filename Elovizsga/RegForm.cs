@@ -67,23 +67,6 @@ namespace Elovizsga
         {
             closeBT.BackColor = panel2.BackColor;
         }
-
-
-
-        private void vezetekNevTB_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void panel1_MouseEnter(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void panel1_MouseLeave(object sender, EventArgs e)
-        {
-            
-        }
         //Új felhasználó felvétele az adatbázisba
         private void RegBT_Click(object sender, EventArgs e)
         {
@@ -97,11 +80,6 @@ namespace Elovizsga
             uj.setVezet(vezeteknev);
             vezetekNevTB.Text = uj.VezetekNev;
             keresztNevTB.Focus();
-        }
-
-        private void keresztNevTB_TextChanged(object sender, EventArgs e)
-        {
-
         }
         //Keresztnév ellenőrzése és beállítása
         private void keresztNevTB_Leave(object sender, EventArgs e)
@@ -117,7 +95,7 @@ namespace Elovizsga
             jelszo = JelszoTB.Text.ToString();
             uj.setJelszo(jelszo);
             JelszoTB.Text = uj.Jelszo;
-            jelszo = uj.EncodePassWD(uj.Jelszo);
+            jelszo = uj.EncodePassWD(JelszoTB.Text);
             emailTB.Focus();
             
         }
@@ -329,12 +307,6 @@ namespace Elovizsga
                 id = int.Parse(ideig);  
             }
         }
-
-        private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (comboBox1.SelectedItem is null || comboBox1.SelectedIndex == 0)
@@ -350,7 +322,5 @@ namespace Elovizsga
                 rosszJogosultsagLL.Visible =false;
             }
         }
-
-
     }
 }
