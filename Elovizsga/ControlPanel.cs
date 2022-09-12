@@ -217,7 +217,6 @@ namespace Elovizsga
                 conn.Close();
             }
         }
-
         private void userProfilBT_Click(object sender, EventArgs e)
         {
             adminControllUC1.Visible = false;

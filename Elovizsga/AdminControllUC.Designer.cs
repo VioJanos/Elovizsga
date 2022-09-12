@@ -107,6 +107,7 @@
             this.editBT.TabIndex = 4;
             this.editBT.Text = "Szerkeztés";
             this.editBT.UseVisualStyleBackColor = false;
+            this.editBT.Click += new System.EventHandler(this.editBT_Click);
             // 
             // deleteBT
             // 
@@ -122,6 +123,7 @@
             this.deleteBT.TabIndex = 5;
             this.deleteBT.Text = "Törlés";
             this.deleteBT.UseVisualStyleBackColor = false;
+            this.deleteBT.Click += new System.EventHandler(this.deleteBT_Click);
             // 
             // saveBT
             // 

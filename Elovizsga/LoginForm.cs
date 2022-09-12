@@ -14,31 +14,13 @@ namespace Elovizsga
 {
     public partial class LoginForm : Form
     {
-        //Csatlakozás az adatbázishoz
-        MySqlConnection conn;
-        string connstring;
-        MySqlCommand cmd;
-        MySqlDataReader dr;
-
         public LoginForm()
         {
             InitializeComponent();
             this.FormBorderStyle = FormBorderStyle.None;
             this.StartPosition = FormStartPosition.CenterScreen;
-            connstring = "SERVER = mysql.nethely.hu;PORT=3306; DATABASE=vizga;uid=vizga;PASSWORD=Janika208";
-            try
-            {
-                conn = new MySqlConnection();
-                conn.ConnectionString = connstring;
-                conn.Open();
-
-            }
-            catch (MySqlException ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-            conn.Close();
         }
+        DbConnection con = new DbConnection();
         RegForm s = new RegForm();
         PassWDCryp uj = new PassWDCryp();
 
@@ -80,42 +62,67 @@ namespace Elovizsga
 
         public void getBejelentkezes()
         {
-            conn.Open();
-            cmd = new MySqlCommand();
-            cmd.Connection = conn;
-            cmd.CommandText = "SELECT PASSWORD FROM vizga.User where Username='" + FelhnTB.Text + "' ;";
-            dr = cmd.ExecuteReader();
-            if (dr.Read())
+            con.Connection();
+            con.Close();
+            string a = "SELECT PASSWORD FROM vizga.User where Username='" + FelhnTB.Text + "' ;";
+            ;
+            string jelszo = uj.DecodePassWD(con.getQuery(a, "password"));
+            if (jelszo == JelszoTB.Text)
             {
-                string jelszo = dr["PASSWORD"].ToString();
-                jelszo = uj.DecodePassWD(jelszo);
-                if(jelszo == JelszoTB.Text)
-                {
-                    MessageBox.Show("Sikeres bejelentkezés!");
-                    string login = "log.txt";
-                    StreamWriter iras = new StreamWriter(login, false, Encoding.UTF8);
-                    iras.WriteLine(FelhnTB.Text + ";" + DateTime.Now.ToLongDateString() + " " + DateTime.Now.ToLongTimeString());
-                    iras.Close();
-                    ControlPanel a = new ControlPanel();
-                    a.Show();
-                    a.BringToFront();
-                    this.Hide();
-                }
-                else
-                {
-                    MessageBox.Show("Hibás jelszó!");
-                    JelszoTB.Clear();
-                    JelszoTB.Focus();
-                }
-               
+                MessageBox.Show("Sikeres bejelentkezés!");
+                string login = "log.txt";
+                StreamWriter iras = new StreamWriter(login, false, Encoding.UTF8);
+                iras.WriteLine(FelhnTB.Text + ";" + DateTime.Now.ToLongDateString() + " " + DateTime.Now.ToLongTimeString());
+                iras.Close();
+                ControlPanel CP1 = new ControlPanel();
+                CP1.Show();
+                CP1.BringToFront();
+                this.Hide();
             }
             else
             {
-                MessageBox.Show("Nem sikerült!");
-                FelhnTB.Text = "";
-                JelszoTB.Text = "";
+                MessageBox.Show("Hibás jelszó!");
+                JelszoTB.Clear();
+                JelszoTB.Focus();
             }
-            conn.Close();
+
+
+            //conn.Open();
+            //cmd = new MySqlCommand();
+            //cmd.Connection = conn;
+            //cmd.CommandText = "SELECT PASSWORD FROM vizga.User where Username='" + FelhnTB.Text + "' ;";
+            //dr = cmd.ExecuteReader();
+            //if (dr.Read())
+            //{
+            //    string jelszo = dr["PASSWORD"].ToString();
+            //    jelszo = uj.DecodePassWD(jelszo);
+            //    if(jelszo == JelszoTB.Text)
+            //    {
+            //        MessageBox.Show("Sikeres bejelentkezés!");
+            //        string login = "log.txt";
+            //        StreamWriter iras = new StreamWriter(login, false, Encoding.UTF8);
+            //        iras.WriteLine(FelhnTB.Text + ";" + DateTime.Now.ToLongDateString() + " " + DateTime.Now.ToLongTimeString());
+            //        iras.Close();
+            //        ControlPanel a = new ControlPanel();
+            //        a.Show();
+            //        a.BringToFront();
+            //        this.Hide();
+            //    }
+            //    else
+            //    {
+            //        MessageBox.Show("Hibás jelszó!");
+            //        JelszoTB.Clear();
+            //        JelszoTB.Focus();
+            //    }
+
+            //}
+            //else
+            //{
+            //    MessageBox.Show("Nem sikerült!");
+            //    FelhnTB.Text = "";
+            //    JelszoTB.Text = "";
+            //}
+            //conn.Close();
         }
     }
 }

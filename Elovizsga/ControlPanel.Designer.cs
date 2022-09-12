@@ -49,8 +49,8 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.pwChange1 = new Elovizsga.PWChange();
             this.adminControllUC1 = new Elovizsga.AdminControllUC();
+            this.pwChange1 = new Elovizsga.PWChange();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -334,15 +334,6 @@
             this.label1.TabIndex = 11;
             this.label1.Text = "Felhasználó:";
             // 
-            // pwChange1
-            // 
-            this.pwChange1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pwChange1.Location = new System.Drawing.Point(200, 100);
-            this.pwChange1.Name = "pwChange1";
-            this.pwChange1.Size = new System.Drawing.Size(1454, 848);
-            this.pwChange1.TabIndex = 3;
-            this.pwChange1.Visible = false;
-            // 
             // adminControllUC1
             // 
             this.adminControllUC1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -351,6 +342,15 @@
             this.adminControllUC1.Size = new System.Drawing.Size(1454, 848);
             this.adminControllUC1.TabIndex = 4;
             this.adminControllUC1.Visible = false;
+            // 
+            // pwChange1
+            // 
+            this.pwChange1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pwChange1.Location = new System.Drawing.Point(200, 100);
+            this.pwChange1.Name = "pwChange1";
+            this.pwChange1.Size = new System.Drawing.Size(1454, 848);
+            this.pwChange1.TabIndex = 3;
+            this.pwChange1.Visible = false;
             // 
             // ControlPanel
             // 
@@ -398,7 +398,7 @@
         private System.Windows.Forms.Button closeBT;
         private PWChange pwChange1;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label adminLL;
         private AdminControllUC adminControllUC1;
+        public System.Windows.Forms.Label adminLL;
     }
 }

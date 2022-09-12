@@ -37,5 +37,21 @@ namespace Elovizsga
         {
             conn.Close();
         }
+        string eredmeny;
+        public string getQuery(string select,string key)
+        {
+            
+            conn.Open();
+            cmd = new MySqlCommand();
+            cmd.Connection = conn;
+            cmd.CommandText = select;
+            dr = cmd.ExecuteReader();
+            if (dr.Read())
+            {
+                eredmeny = dr[key].ToString();
+            }
+            conn.Close();
+            return eredmeny;
+        }
     }
 }

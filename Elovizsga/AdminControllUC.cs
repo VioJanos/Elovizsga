@@ -37,9 +37,12 @@ namespace Elovizsga
             conn.Close();
         }
         PassWDCryp uj = new PassWDCryp();
+        string username;
         private void AdminControllUC_Load(object sender, EventArgs e)
         {
             FelhasznalokDGV.DataSource = GetUsersList();
+            txtBoxEdit();
+            getJog();
         }
         //Lekérdezem az összes elemet a User táblából
         private DataTable GetUsersList()
@@ -51,7 +54,36 @@ namespace Elovizsga
             cmd.CommandText = "SELECT * FROM vizga.User order by Employee_id;";
             dr = cmd.ExecuteReader();
             dtUsers.Load(dr);
+            conn.Close();
             return dtUsers;
+            
+        }
+        private void txtBoxEdit()
+        {
+            if(idTB.Enabled == true)
+            {
+                idTB.Enabled = false;
+                usernameTB.Enabled = false;
+                passwdTB.Enabled = false;
+                firstnameTB.Enabled = false;
+                lastnameTB.Enabled = false;
+                mailTB.Enabled = false;
+                dateTimePicker1.Enabled = false;
+                comboBox1.Enabled = false;
+            }
+            else
+            {
+                idTB.Enabled = true;
+                usernameTB.Enabled = true;
+                passwdTB.Enabled = true;
+                firstnameTB.Enabled = true;
+                lastnameTB.Enabled = true;
+                mailTB.Enabled = true;
+                dateTimePicker1.Enabled = true;
+                comboBox1.Enabled = true;
+            }
+
+           
         }
         //Excelbe kiírom a DataGridView tartalmát
         private void saveBT_Click(object sender, EventArgs e)
@@ -109,6 +141,46 @@ namespace Elovizsga
                 }
                 
             }
+        }
+
+        private void editBT_Click(object sender, EventArgs e)
+        {
+            txtBoxEdit();
+        }
+        //Törli az adott sort, és frissíti a nézetet.
+        private void deleteBT_Click(object sender, EventArgs e)
+        {
+            DialogResult torli;
+            torli = MessageBox.Show("Biztos törli az adott elemet?", "Törlés",MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if(torli == DialogResult.Yes)
+            {
+                conn.Open();
+                cmd = new MySqlCommand();
+                cmd.Connection = conn;
+                cmd.CommandText = "Delete FROM vizga.User WHERE Username = @Username;";
+                cmd.Parameters.AddWithValue("@Username", usernameTB.Text);
+                dr = cmd.ExecuteReader();
+                conn.Close();
+                FelhasznalokDGV.DataSource = null;
+                FelhasznalokDGV.DataSource = GetUsersList();
+            }
+        }
+        //Vizsgálja hogy milyen joggal van bent a felhasználó és úgy engedélyezi a gombokat
+        private void getJog()
+        {
+            
+            //if ()
+            //{
+            //    newBT.Enabled = true;
+            //    editBT.Enabled = true;
+            //    deleteBT.Enabled = true;
+            //}
+            //else
+            //{
+            //    newBT.Enabled = false;
+            //    editBT.Enabled = false;
+            //    deleteBT.Enabled = false;
+            //}
         }
     }
 }

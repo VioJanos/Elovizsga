@@ -29,21 +29,22 @@ namespace Elovizsga
             connstring = "SERVER = mysql.nethely.hu;PORT=3306; DATABASE=vizga;uid=vizga;PASSWORD=Janika208";
             try
             {
+                //db1.Connection();
                 conn = new MySqlConnection();
                 conn.ConnectionString = connstring;
                 conn.Open();
                 getID();//Az adatbázisban következő ID-t adja az új felhasználónak
                 id++;
-                
             }
             catch (MySqlException ex)
             {
                 MessageBox.Show(ex.Message);
             }
             conn.Close();
+            //db1.Close();
         }
         // Új példány létrehozása az osztályból, változók
-        //Users uj = new Users();
+        //DbConnection db1 = new DbConnection();
         PassWDCryp uj = new PassWDCryp();
         string vezeteknev = "";
         string keresztnev = "";
@@ -297,6 +298,12 @@ namespace Elovizsga
 
         public void getID()
         {
+            // Működik  de a többivel még el kell jászni addig kiveszem
+            //string select = "SELECT Employee_id FROM vizga.User order by Employee_id desc ";
+            //db1.getQuery(select, "Employee_id");
+            //id = int.Parse(db1.getQuery(select, "Employee_id"));
+            //-------------------------------------------------------------------------------------------------------------------
+
             cmd = new MySqlCommand();
             cmd.Connection = conn;
             cmd.CommandText = "SELECT Employee_id FROM vizga.User order by Employee_id desc ";
@@ -304,7 +311,7 @@ namespace Elovizsga
             if (dr.Read())
             {
                 string ideig = dr["Employee_id"].ToString();
-                id = int.Parse(ideig);  
+                id = int.Parse(ideig);
             }
         }
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
