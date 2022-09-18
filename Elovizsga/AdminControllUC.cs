@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
 using MySql.Data.MySqlClient;
 
 
@@ -35,9 +36,13 @@ namespace Elovizsga
                 MessageBox.Show(ex.Message);
             }
             conn.Close();
+            rF1.getID();
         }
         PassWDCryp uj = new PassWDCryp();
+        RegForm rF1 = new RegForm();
         string username;
+        int id;
+        string jelszo;
         private void AdminControllUC_Load(object sender, EventArgs e)
         {
             FelhasznalokDGV.DataSource = GetUsersList();
@@ -88,27 +93,38 @@ namespace Elovizsga
         //Excelbe kiírom a DataGridView tartalmát
         private void saveBT_Click(object sender, EventArgs e)
         {
-            Microsoft.Office.Interop.Excel.Application app = new Microsoft.Office.Interop.Excel.Application();
-            Microsoft.Office.Interop.Excel.Workbook workbook = app.Workbooks.Add(Type.Missing);
-            Microsoft.Office.Interop.Excel.Worksheet worksheet = null;
-
-            app.Visible = true;
-            worksheet = workbook.Sheets["Munka1"];
-            worksheet = workbook.ActiveSheet;
-            worksheet.Name = "Teljes személyi állomány";
-
-            for(int i = 1; i < FelhasznalokDGV.Columns.Count + 1; i++)
+            if(saveBT.Text == "Exportálás")
             {
-                worksheet.Cells[1, i] = FelhasznalokDGV.Columns[i - 1].HeaderText;
-            }
-            for(int i = 0; i < FelhasznalokDGV.Rows.Count -1; i++)
-            {
-                for(int j = 0; j < FelhasznalokDGV.Columns.Count; j++)
+                Microsoft.Office.Interop.Excel.Application app = new Microsoft.Office.Interop.Excel.Application();
+                Microsoft.Office.Interop.Excel.Workbook workbook = app.Workbooks.Add(Type.Missing);
+                Microsoft.Office.Interop.Excel.Worksheet worksheet = null;
+
+                app.Visible = true;
+                worksheet = workbook.Sheets["Munka1"];
+                worksheet = workbook.ActiveSheet;
+                worksheet.Name = "Teljes személyi állomány";
+
+                for (int i = 1; i < FelhasznalokDGV.Columns.Count + 1; i++)
                 {
-                    worksheet.Cells[i + 2, j + 1] = FelhasznalokDGV.Rows[i].Cells[j].Value.ToString();
+                    worksheet.Cells[1, i] = FelhasznalokDGV.Columns[i - 1].HeaderText;
+                }
+                for (int i = 0; i < FelhasznalokDGV.Rows.Count - 1; i++)
+                {
+                    for (int j = 0; j < FelhasznalokDGV.Columns.Count; j++)
+                    {
+                        worksheet.Cells[i + 2, j + 1] = FelhasznalokDGV.Rows[i].Cells[j].Value.ToString();
+                    }
                 }
             }
-
+            
+            //Ha az "Új hozzáadása" gombra kattint akkor más lesz a gomb szövege és megcsinálja a felhasználót(nem működik rendesen még!)
+            if(saveBT.Text == "Mentés")
+            {
+                                
+                setUjFelhasznalo();
+                rF1.setJogos(comboBox1.Text);
+                rF1.setSzulido();
+            }
         }
         //Az adott sorra kattintva kitölti a TB -kat, szerkeztés még nincs meg.
         private void FelhasznalokDGV_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -142,7 +158,7 @@ namespace Elovizsga
                 
             }
         }
-
+        //Szerkezthetőek lesznek a textBoxok
         private void editBT_Click(object sender, EventArgs e)
         {
             txtBoxEdit();
@@ -161,26 +177,107 @@ namespace Elovizsga
                 cmd.Parameters.AddWithValue("@Username", usernameTB.Text);
                 dr = cmd.ExecuteReader();
                 conn.Close();
-                FelhasznalokDGV.DataSource = null;
-                FelhasznalokDGV.DataSource = GetUsersList();
+                reLoad();
             }
+        }
+        //DataGridView újratöltése
+        private void reLoad()
+        {
+            FelhasznalokDGV.DataSource = null;
+            FelhasznalokDGV.DataSource = GetUsersList();
         }
         //Vizsgálja hogy milyen joggal van bent a felhasználó és úgy engedélyezi a gombokat
         private void getJog()
         {
+            bool vizsgal =false;
+            string log = "log.txt";
+            StreamReader olvas = new StreamReader(log, Encoding.UTF8);
+            string sor = "";
+            while (!olvas.EndOfStream)
+            {
+                sor = olvas.ReadLine();
+                string[] ideig = sor.Split(';');
+                if (!sor.Equals(""))
+                {
+                    username = ideig[0];
+                }
+            }
+            olvas.Close();
+
+
+            conn.Open();
+            cmd = new MySqlCommand();
+            cmd.Connection= conn;
+            cmd.CommandText = "Select Username FROM vizga.User where Admin = 1 and Username = @Username";
+            cmd.Parameters.AddWithValue("@Username", username);
+            dr = cmd.ExecuteReader();
+            if(dr.Read())
+            {
+                dr["Username"].ToString();
+                vizsgal = dr["Username"].ToString() == username;
             
-            //if ()
-            //{
-            //    newBT.Enabled = true;
-            //    editBT.Enabled = true;
-            //    deleteBT.Enabled = true;
-            //}
-            //else
-            //{
-            //    newBT.Enabled = false;
-            //    editBT.Enabled = false;
-            //    deleteBT.Enabled = false;
-            //}
+            }
+            if (vizsgal)
+            {
+                newBT.Enabled = true;
+                editBT.Enabled = true;
+                deleteBT.Enabled = true;
+            }
+            else
+            {
+                newBT.Enabled = false;
+                editBT.Enabled = false;
+                deleteBT.Enabled = false;
+            }
+            conn.Close();
+        }
+        private void setUjFelhasznalo()
+        {
+            conn.Open();
+            cmd = new MySqlCommand();
+            cmd.Connection = conn;
+            cmd.CommandText = "INSERT INTO vizga.User (`Employee_id`, `Password`, `First_name`, `Last_name`, `E-mail`) VALUES('" + uj.setID(id) + "', '" + jelszo + "', '" + lastnameTB.Text + "', '" + firstnameTB.Text + "', '" + mailTB.Text + "');";
+            dr = cmd.ExecuteReader();
+            if (!dr.Read())
+            {
+                MessageBox.Show("Felhasználó létrehozva!");
+                id++;
+                conn.Close();
+                reLoad();
+            }
+            else
+            {
+                MessageBox.Show("Hiba!");
+            }
+            conn.Close();
+        }
+        //Kiüríti a textBoxokat
+        public void textBoxEmpty()
+        {
+            idTB.Clear();
+            usernameTB.Clear();
+            passwdTB.Clear();
+            firstnameTB.Clear();
+            lastnameTB.Clear();
+            mailTB.Clear();
+
+
+        }
+        private void newBT_Click(object sender, EventArgs e)
+        {
+            textBoxEmpty();
+            txtBoxEdit();
+            idTB.Enabled = false ;
+            usernameTB.Enabled = false ;
+            saveBT.Text = "Mentés";
+        }
+        // Jelszó titkosítás
+        private void passwdTB_Leave(object sender, EventArgs e)
+        {
+            jelszo = passwdTB.Text.ToString();
+            uj.setJelszo(jelszo);
+            passwdTB.Text = uj.Jelszo;
+            jelszo = uj.EncodePassWD(passwdTB.Text);
         }
     }
 }

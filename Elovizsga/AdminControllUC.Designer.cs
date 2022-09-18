@@ -86,12 +86,13 @@
             this.newBT.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.newBT.Font = new System.Drawing.Font("Akashi_hun", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.newBT.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.newBT.Location = new System.Drawing.Point(1281, 413);
+            this.newBT.Location = new System.Drawing.Point(1281, 416);
             this.newBT.Name = "newBT";
             this.newBT.Size = new System.Drawing.Size(159, 62);
             this.newBT.TabIndex = 3;
             this.newBT.Text = "Új hozzáadása";
             this.newBT.UseVisualStyleBackColor = false;
+            this.newBT.Click += new System.EventHandler(this.newBT_Click);
             // 
             // editBT
             // 
@@ -137,7 +138,7 @@
             this.saveBT.Name = "saveBT";
             this.saveBT.Size = new System.Drawing.Size(159, 62);
             this.saveBT.TabIndex = 6;
-            this.saveBT.Text = "Mentés";
+            this.saveBT.Text = "Exportálás";
             this.saveBT.UseVisualStyleBackColor = false;
             this.saveBT.Click += new System.EventHandler(this.saveBT_Click);
             // 
@@ -241,6 +242,7 @@
             this.passwdTB.Name = "passwdTB";
             this.passwdTB.Size = new System.Drawing.Size(177, 20);
             this.passwdTB.TabIndex = 17;
+            this.passwdTB.Leave += new System.EventHandler(this.passwdTB_Leave);
             // 
             // lastnameTB
             // 

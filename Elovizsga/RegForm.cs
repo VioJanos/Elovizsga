@@ -33,14 +33,15 @@ namespace Elovizsga
                 conn = new MySqlConnection();
                 conn.ConnectionString = connstring;
                 conn.Open();
-                getID();//Az adatbázisban következő ID-t adja az új felhasználónak
-                id++;
+                
             }
             catch (MySqlException ex)
             {
                 MessageBox.Show(ex.Message);
             }
             conn.Close();
+            getID();//Az adatbázisban következő ID-t adja az új felhasználónak
+            id++;
             //db1.Close();
         }
         // Új példány létrehozása az osztályból, változók
@@ -148,6 +149,9 @@ namespace Elovizsga
             if (!dr.Read())
             {
                 MessageBox.Show("Felhasználó létrehozva, bejelentkezhetsz!");
+                
+                //Users u1 = new Users(id, vezeteknev, keresztnev, jelszo, jogosultsag, emailTB.Text, szuletesido);
+                //u1.Felhasznalok.Add(u1);
                 id++;
                 torol();
 
@@ -163,7 +167,7 @@ namespace Elovizsga
             rosszEmailLL.Visible = false;
         }
         //Jogosultság beállítása adatbázisban osztályban lévő adat alapján
-        private void setJogos(string jog)
+        public void setJogos(string jog)
         {
             username = vezeteknev.Substring(0,3) + keresztnev.Substring(0,3) + uj.Id;
             jog = jogosultsag;
@@ -303,7 +307,7 @@ namespace Elovizsga
             //db1.getQuery(select, "Employee_id");
             //id = int.Parse(db1.getQuery(select, "Employee_id"));
             //-------------------------------------------------------------------------------------------------------------------
-
+            conn.Open();
             cmd = new MySqlCommand();
             cmd.Connection = conn;
             cmd.CommandText = "SELECT Employee_id FROM vizga.User order by Employee_id desc ";
@@ -313,6 +317,7 @@ namespace Elovizsga
                 string ideig = dr["Employee_id"].ToString();
                 id = int.Parse(ideig);
             }
+            conn.Close();
         }
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {

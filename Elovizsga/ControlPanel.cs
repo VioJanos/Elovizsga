@@ -41,11 +41,6 @@ namespace Elovizsga
         }
         string username;
         string datum;
-        private void flowLayoutPanel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
         private void mainBT_Click(object sender, EventArgs e)
         {
             pwChange1.Visible = false;
@@ -63,8 +58,6 @@ namespace Elovizsga
             getJogA(username);
             getJogL(username);
             getJogO(username);
-
-
         }
         //Alkalmazás bezárása és ablak méretezések és szinváltoztatás
         private void closeBT_Click(object sender, EventArgs e)
@@ -190,7 +183,6 @@ namespace Elovizsga
             if (dr.Read())
             {
                 adminLL.Text = "Vezető";
-                adminBT.Enabled = false;
                 conn.Close();
             }
             else
